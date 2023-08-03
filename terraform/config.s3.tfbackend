@@ -1,0 +1,4 @@
+region         = "eu-central-1"
+bucket         = "tensin-terraform-state"
+dynamodb_table = "tensin-terraform-locks"
+encrypt        = true
