@@ -18,7 +18,7 @@ module "firewall" {
   open_ports = [var.ssh_port, var.wireguard_port]
 }
 
-resource "yandex_vpc_address" "this" {
+resource "yandex_vpc_address" "server" {
   name = "${var.project_stub}-address"
 
   external_ipv4_address {

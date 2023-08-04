@@ -14,7 +14,7 @@ module "server" {
   source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v0.0.2"
 
   zone       = data.terraform_remote_state.project.outputs.zone
-  name       = data.terraform_remote_state.project.outputs.project_stub
+  name       = "${data.terraform_remote_state.project.outputs.project_stub}-server"
   subnet_id  = data.terraform_remote_state.project.outputs.subnet_id
   ip_address = data.terraform_remote_state.project.outputs.ip_address
 
