@@ -11,7 +11,7 @@ resource "yandex_vpc_subnet" "this" {
 }
 
 module "firewall" {
-  source = "../../../modules/yc_firewall"
+  source = "github.com/egor-tensin/infra-terraform//yandex/firewall?ref=v0.0.2"
 
   name       = "${var.project_stub}-firewall"
   vpc_id     = yandex_vpc_network.this.id
