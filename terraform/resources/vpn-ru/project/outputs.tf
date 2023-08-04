@@ -14,3 +14,7 @@ output "security_group_id" {
 output "ip_address" {
   value = yandex_vpc_address.server.external_ipv4_address[0].address
 }
+
+output "ssh_port" {
+  value = var.ssh_port
+}

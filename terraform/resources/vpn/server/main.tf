@@ -6,9 +6,12 @@ data "digitalocean_ssh_keys" "this" {
 }
 
 locals {
-  user           = "maintenance"
-  wireguard_port = "443"
+  user = "maintenance"
+
   ssh_port       = "993"
+  wireguard_port = "443"
+
+  open_ports = [local.ssh_port, local.wireguard_port]
 }
 
 module "server" {
@@ -30,6 +33,6 @@ module "firewall" {
   source = "github.com/egor-tensin/infra-terraform//digitalocean/firewall?ref=v0.0.4"
 
   name        = "${data.terraform_remote_state.project.outputs.project_stub}-firewall"
-  open_ports  = [local.wireguard_port, local.ssh_port]
+  open_ports  = local.open_ports
   droplet_ids = [module.server.droplet_id]
 }

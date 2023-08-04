@@ -1,6 +1,5 @@
 locals {
-  user     = "maintenance"
-  ssh_port = "993"
+  user = "maintenance"
 }
 
 data "digitalocean_ssh_keys" "this" {
@@ -20,7 +19,7 @@ module "server" {
 
   user     = local.user
   ssh_keys = data.digitalocean_ssh_keys.this.ssh_keys.*.public_key
-  ssh_port = local.ssh_port
+  ssh_port = data.terraform_remote_state.project.outputs.ssh_port
 
   core_fraction = 20
 }
