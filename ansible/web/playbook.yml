@@ -1,0 +1,37 @@
+- name: Maintenance
+  hosts: all
+
+  roles:
+    - tensin.infra.apt
+    - tensin.infra.journald
+    - tensin.infra.linux_status
+    - tensin.infra.docker
+    - tensin.infra.digitalocean_volume
+    - role: tensin.infra.systemd_requires_mount
+      vars:
+        service_name: docker
+        mount_dir: '{{ volume_dir }}'
+    - tensin.infra.letsencrypt
+    - tensin.infra.workspace
+
+  vars:
+    apt_extra_packages:
+      # To deploy Jekyll pages:
+      - rsync
+
+    volume_name: web-data
+    volume_dir: /mnt/data
+
+    letsencrypt_domains:
+      - name: egort.name
+        domains:
+          - egort.name
+          - dev.egort.name
+          - git.egort.name
+          - id.egort.name
+          - shadow.egort.name
+          - stash.egort.name
+
+    workspace_projects:
+      - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
+        name: server
