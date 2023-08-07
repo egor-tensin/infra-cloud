@@ -12,3 +12,23 @@ terraform {
 
 provider "digitalocean" {
 }
+
+data "terraform_remote_state" "vpn" {
+  backend = "s3"
+
+  config = {
+    region = "eu-central-1"
+    bucket = "tensin-terraform-state"
+    key    = "vpn/project/terraform.tfstate"
+  }
+}
+
+data "terraform_remote_state" "vpn_ru" {
+  backend = "s3"
+
+  config = {
+    region = "eu-central-1"
+    bucket = "tensin-terraform-state"
+    key    = "vpn-ru/project/terraform.tfstate"
+  }
+}

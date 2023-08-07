@@ -11,7 +11,7 @@ output "subnet_id" {
 output "security_group_id" {
   value = module.firewall.id
 }
-output "ip_address" {
+output "server_ip" {
   value = yandex_vpc_address.server.external_ipv4_address[0].address
 }
 

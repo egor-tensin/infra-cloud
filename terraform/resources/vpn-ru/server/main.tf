@@ -15,7 +15,7 @@ module "server" {
   zone       = data.terraform_remote_state.project.outputs.zone
   name       = "${data.terraform_remote_state.project.outputs.project_stub}-server"
   subnet_id  = data.terraform_remote_state.project.outputs.subnet_id
-  ip_address = data.terraform_remote_state.project.outputs.ip_address
+  ip_address = data.terraform_remote_state.project.outputs.server_ip
 
   user     = local.user
   ssh_keys = data.digitalocean_ssh_keys.this.ssh_keys.*.public_key
