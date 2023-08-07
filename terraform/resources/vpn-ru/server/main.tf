@@ -10,7 +10,7 @@ data "digitalocean_ssh_keys" "this" {
 }
 
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v0.0.2"
+  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v1.0.0"
 
   zone       = data.terraform_remote_state.project.outputs.zone
   name       = "${data.terraform_remote_state.project.outputs.project_stub}-server"

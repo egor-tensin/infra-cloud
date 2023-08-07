@@ -15,7 +15,7 @@ locals {
 }
 
 module "firewall" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/firewall?ref=v0.0.2"
+  source = "github.com/egor-tensin/infra-terraform//yandex/firewall?ref=v1.0.0"
 
   name       = "${var.project_stub}-firewall"
   vpc_id     = yandex_vpc_network.this.id

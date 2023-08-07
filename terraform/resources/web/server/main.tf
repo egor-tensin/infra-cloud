@@ -16,7 +16,7 @@ locals {
 }
 
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v0.0.1"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v1.0.0"
 
   region     = data.terraform_remote_state.project.outputs.region
   project_id = data.terraform_remote_state.project.outputs.project_id
@@ -34,7 +34,7 @@ module "server" {
 }
 
 module "firewall" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/firewall?ref=v0.0.5"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/firewall?ref=v1.0.0"
 
   name        = "${data.terraform_remote_state.project.outputs.project_stub}-firewall"
   open_ports  = local.open_ports

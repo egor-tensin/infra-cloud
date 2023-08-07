@@ -18,7 +18,7 @@ resource "digitalocean_project_resources" "this" {
 }
 
 module "domain" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=cbffba1"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.0.0"
 
   name       = "egort.name"
   ip_address = digitalocean_floating_ip.server.ip_address
