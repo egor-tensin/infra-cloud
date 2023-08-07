@@ -14,43 +14,37 @@
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn-ru.git'
         name: server
 
-    subnet4: '192.168.205'
-    subnet6: 'fd9d:bc11:4021::192.168.205'
+    prefix4: '192.168.205'
+    prefix6: 'fd9d:bc11:4021::192.168.205'
 
     wg_name: vpn
     wg_listen_port: 443
     wg_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
-    wg_addr4: '{{ subnet4 }}.13/24'
-    wg_addr6: '{{ subnet6 }}.13/48'
+    wg_addr4: '{{ prefix4 }}.253/24'
+    wg_addr6: '{{ prefix6 }}.253/48'
 
     wg_peers:
       # tensin-laptop2
       - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
         preshared_key: wD2zpF415fBg9XXuoPVJIB4jcjE4kIk+kVC1NF2aLFI=
-        addr4: '{{ subnet4 }}.2'
-        addr6: '{{ subnet6 }}.2'
+        allowed_ips: '{{ prefix4 }}.2/32, {{ prefix6 }}.2/128'
       # daria-phone
       - public_key: nE628227u2v0cUISn81aMtsKnrSkO/tqBE7bClyYU3Y=
         preshared_key: 0KbvrO9hDh5dHVuK1XVASkZLIHl5o65L+vYXVyKEsxM=
-        addr4: '{{ subnet4 }}.12'
-        addr6: '{{ subnet6 }}.12'
+        allowed_ips: '{{ prefix4 }}.12/32, {{ prefix6 }}.12/128'
       # daria-ipad
       - public_key: RJjN5vSiBFUTzZrKSR+27FBGvSn41CmGBMgQShiOGAc=
         preshared_key: ZHa3A5Bwn9SjY//NJLwHNW2c046nf0nwIC7eFvx3QfI=
-        addr4: '{{ subnet4 }}.14'
-        addr6: '{{ subnet6 }}.14'
+        allowed_ips: '{{ prefix4 }}.14/32, {{ prefix6 }}.14/128'
       # daria-laptop2
       - public_key: RMGaFRWhmFCv75/rA8kMMqhPpWbgLAyeaQ0LV6gxRg0=
         preshared_key: 4SlMh3unV6TLhT62Q2PACO8oFpi7+yLW+F3XAYsf1YY=
-        addr4: '{{ subnet4 }}.15'
-        addr6: '{{ subnet6 }}.15'
+        allowed_ips: '{{ prefix4 }}.15/32, {{ prefix6 }}.15/128'
       # tensin-phone3
       - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
         preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
-        addr4: '{{ subnet4 }}.16'
-        addr6: '{{ subnet6 }}.16'
+        allowed_ips: '{{ prefix4 }}.16/32, {{ prefix6 }}.16/128'
       # Mac
       - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
         preshared_key: ON32YlGCgXyuBGgaYSjRxvUeLQU4bBVYJR07KG/rBvE=
-        addr4: '{{ subnet4 }}.17'
-        addr6: '{{ subnet6 }}.17'
+        allowed_ips: '{{ prefix4 }}.17/32, {{ prefix6 }}.17/128'

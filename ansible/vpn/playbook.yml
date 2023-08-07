@@ -6,71 +6,57 @@
     - tensin.infra.journald
     - tensin.infra.linux_status
     - tensin.infra.docker
-    - tensin.infra.workspace
     - tensin.infra.wireguard
+    - tensin.infra.workspace
 
   vars:
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
         name: server
 
-    subnet4: '192.168.205'
-    subnet6: 'fd9d:bc11:4021::192.168.205'
+    prefix4: '192.168.205'
+    prefix6: 'fd9d:bc11:4021::192.168.205'
 
     wg_name: vpn
     wg_listen_port: 443
-    wg_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
-    wg_addr4: '{{ subnet4 }}.13/24'
-    wg_addr6: '{{ subnet6 }}.13/48'
+    wg_private_key: AL2RI6nHtcT6ErWJi1BgzxWQf38KcTmfyr1nBapFAGY=
+    wg_addr4: '{{ prefix4 }}.254/24'
+    wg_addr6: '{{ prefix6 }}.254/48'
 
     wg_peers:
       # tensin-laptop2
       - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
-        preshared_key: wD2zpF415fBg9XXuoPVJIB4jcjE4kIk+kVC1NF2aLFI=
-        addr4: '{{ subnet4 }}.2'
-        addr6: '{{ subnet6 }}.2'
+        preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
+        allowed_ips: '{{ prefix4 }}.2/32, {{ prefix6 }}.2/128'
       # tensin-raspi2
       - public_key: UWqQrP6yvW/5FCSgbUqGfljNLzJRzQM00w/NP5VVYm4=
         preshared_key: f/gBtPEZJtw1BDM+dmXAGLNE0lpsYl083a5Z+skVkKk=
-        addr4: '{{ subnet4 }}.4'
-        addr6: '{{ subnet6 }}.4'
+        allowed_ips: '{{ prefix4 }}.4/32, {{ prefix6 }}.4/128'
       # tensin-web
       - public_key: 2qjay8ABLTrE8maY7ulQM186XdK71uKdiI+3rf3wA1E=
         preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
-        addr4: '{{ subnet4 }}.8'
-        addr6: '{{ subnet6 }}.8'
+        allowed_ips: '{{ prefix4 }}.8/32, {{ prefix6 }}.8/128'
       # GitHub
       - public_key: YDI1OzWMy1u7Cw3JjSLSGwKgqglPEw/KTAszEsBSOgQ=
         preshared_key: cRksPxECPvmnR6Eu4D4yNuE3swTiP05S2yMxQrFxHwc=
-        addr4: '{{ subnet4 }}.9'
-        addr6: '{{ subnet6 }}.9'
+        allowed_ips: '{{ prefix4 }}.9/32, {{ prefix6 }}.9/128'
       # daria-phone
       - public_key: nE628227u2v0cUISn81aMtsKnrSkO/tqBE7bClyYU3Y=
-        preshared_key: 0KbvrO9hDh5dHVuK1XVASkZLIHl5o65L+vYXVyKEsxM=
-        addr4: '{{ subnet4 }}.12'
-        addr6: '{{ subnet6 }}.12'
-      # tensin-vpn-ru
-      - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
-        preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
-        addr4: '{{ subnet4 }}.12'
-        addr6: '{{ subnet6 }}.12'
+        preshared_key: 6vrXlhQv68jNT+Otu9v+7vt1eKg52J8oGHxA0EoWtp0=
+        allowed_ips: '{{ prefix4 }}.12/32, {{ prefix6 }}.12/128'
       # daria-ipad
       - public_key: RJjN5vSiBFUTzZrKSR+27FBGvSn41CmGBMgQShiOGAc=
-        preshared_key: ZHa3A5Bwn9SjY//NJLwHNW2c046nf0nwIC7eFvx3QfI=
-        addr4: '{{ subnet4 }}.14'
-        addr6: '{{ subnet6 }}.14'
+        preshared_key: Bu69rGZPpbuh0xlwYsCXwYICG3YVO9jWKZw8Vytt8jE=
+        allowed_ips: '{{ prefix4 }}.14/32, {{ prefix6 }}.14/128'
       # daria-laptop2
       - public_key: RMGaFRWhmFCv75/rA8kMMqhPpWbgLAyeaQ0LV6gxRg0=
-        preshared_key: 4SlMh3unV6TLhT62Q2PACO8oFpi7+yLW+F3XAYsf1YY=
-        addr4: '{{ subnet4 }}.15'
-        addr6: '{{ subnet6 }}.15'
+        preshared_key: U0VyJhCVtXYaCla1n0GAjGVSbCdOuLggun0I1rFCVLY=
+        allowed_ips: '{{ prefix4 }}.15/32, {{ prefix6 }}.15/128'
       # tensin-phone3
       - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
-        preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
-        addr4: '{{ subnet4 }}.16'
-        addr6: '{{ subnet6 }}.16'
+        preshared_key: iRdYcUGMXoZDj2xgXa81qSyx34P3Pt+UXNJtMCeuDQM=
+        allowed_ips: '{{ prefix4 }}.16/32, {{ prefix6 }}.16/128'
       # Mac
       - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
-        preshared_key: ON32YlGCgXyuBGgaYSjRxvUeLQU4bBVYJR07KG/rBvE=
-        addr4: '{{ subnet4 }}.17'
-        addr6: '{{ subnet6 }}.17'
+        preshared_key: pOl3UphYCPZBQTNui74HqQgGgvdVmnd313dnniqHqWw=
+        allowed_ips: '{{ prefix4 }}.17/32, {{ prefix6 }}.17/128'
