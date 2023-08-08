@@ -19,9 +19,13 @@
       # The web server
       - port: 80
         source: '{{ wg_addr4 }}'
+      # wg-api-web
+      - port: 1234
+        source: 192.168.177.1/24
     firewall_ports_udp:
       # WireGuard
       - '{{ wg_listen_port }}'
+
 
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
