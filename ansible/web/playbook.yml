@@ -8,7 +8,7 @@
     - tensin.infra.linux_status
     - tensin.infra.docker
     - tensin.infra.digitalocean_volume
-    - role: tensin.infra.systemd_requires_mount_for
+    - role: tensin.infra.systemd_requires_mounts_for
       vars:
         service_name: docker
         mount_dir: '{{ volume_dir }}'
