@@ -16,6 +16,9 @@
     - tensin.infra.wireguard
     - tensin.infra.workspace
 
+  vars_files:
+    - ./wg.yml
+
   vars:
     apt_extra_packages:
       # To deploy Jekyll pages:
@@ -42,21 +45,6 @@
           - id.egort.name
           - shadow.egort.name
           - stash.egort.name
-
-    prefix4: '192.168.205'
-    prefix6: 'fd9d:bc11:4021::192.168.205'
-
-    wg_name: vpn
-    wg_private_key: WBO8t16PPpVnKa4EXpFCHT8vwJuPt5qmpYGLMfvjsG8=
-    wg_addr4: '{{ prefix4 }}.8/24'
-    wg_addr6: '{{ prefix6 }}.8/48'
-
-    wg_peers:
-      - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
-        preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
-        allowed_ips: '{{ prefix4 }}.0/24, {{ prefix6 }}.0/48'
-        endpoint: vpn.egort.name:443
-        persistent_keepalive: true
 
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
