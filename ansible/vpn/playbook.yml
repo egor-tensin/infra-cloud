@@ -17,7 +17,7 @@
   vars:
     firewall_ports4_tcp:
       # The web server
-      - port: 8080
+      - port: 80
         source: '{{ wg_addr4 }}'
     firewall_ports_udp:
       # WireGuard
