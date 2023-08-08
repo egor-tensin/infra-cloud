@@ -3,6 +3,7 @@
 
   roles:
     - tensin.infra.apt
+    - tensin.infra.firewall
     - tensin.infra.journald
     - tensin.infra.linux_status
     - tensin.infra.docker
@@ -19,6 +20,13 @@
     apt_extra_packages:
       # To deploy Jekyll pages:
       - rsync
+
+    firewall_ports_tcp:
+      # Gitea's SSH server
+      - 22
+      # The web server
+      - 80
+      - 443
 
     linux_status_disable_power_management: true
 

@@ -32,11 +32,3 @@ module "server" {
 
   size = "s-2vcpu-4gb"
 }
-
-module "firewall" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/firewall?ref=v1.0.0"
-
-  name        = "${data.terraform_remote_state.project.outputs.project_stub}-firewall"
-  open_ports  = local.open_ports
-  droplet_ids = [module.server.droplet_id]
-}

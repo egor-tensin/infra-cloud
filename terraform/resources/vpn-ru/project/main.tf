@@ -10,18 +10,6 @@ resource "yandex_vpc_subnet" "this" {
   v4_cidr_blocks = ["10.0.0.0/22"]
 }
 
-locals {
-  open_ports = [var.ssh_port, var.wireguard_port]
-}
-
-module "firewall" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/firewall?ref=v1.0.0"
-
-  name       = "${var.project_stub}-firewall"
-  vpc_id     = yandex_vpc_network.this.id
-  open_ports = local.open_ports
-}
-
 resource "yandex_vpc_address" "server" {
   name = "${var.project_stub}-address"
 

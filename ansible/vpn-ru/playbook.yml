@@ -3,6 +3,8 @@
 
   roles:
     - tensin.infra.apt
+    - tensin.infra.firewall
+    - tensin.infra.router
     - tensin.infra.journald
     - tensin.infra.linux_status
     - tensin.infra.docker
@@ -22,6 +24,7 @@
     wg_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
     wg_addr4: '{{ prefix4 }}.253/24'
     wg_addr6: '{{ prefix6 }}.253/48'
+    wg_firewall: true
 
     wg_peers:
       # tensin-laptop2
@@ -48,3 +51,11 @@
       - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
         preshared_key: ON32YlGCgXyuBGgaYSjRxvUeLQU4bBVYJR07KG/rBvE=
         allowed_ips: '{{ prefix4 }}.17/32, {{ prefix6 }}.17/128'
+
+    firewall_ports4_tcp:
+      # The web server
+      - port: 80
+        source: '{{ wg_addr4 }}'
+    firewall_ports_udp:
+      # WireGuard
+      - '{{ wg_listen_port }}'
