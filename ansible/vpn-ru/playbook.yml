@@ -9,8 +9,8 @@
     - tensin.infra.journald
     - tensin.infra.linux_status
     - tensin.infra.docker
-    - tensin.infra.workspace
     - tensin.infra.wireguard
+    - tensin.infra.workspace
 
   vars_files:
     - ./wg.yml

@@ -27,7 +27,6 @@
       # WireGuard
       - '{{ wg_listen_port }}'
 
-
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
         name: server
