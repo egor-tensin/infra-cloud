@@ -1,5 +1,6 @@
 - name: Maintenance
   hosts: all
+  gather_facts: false
 
   roles:
     - tensin.infra.cloud_init_wait
