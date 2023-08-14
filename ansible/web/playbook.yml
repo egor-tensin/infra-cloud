@@ -35,6 +35,8 @@
 
     linux_status_disable_power_management: true
 
+    docker_logging_driver: local
+
     volume_name: web-data
     volume_dir: /mnt/data
 
