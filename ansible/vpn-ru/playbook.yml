@@ -5,6 +5,7 @@
   roles:
     - tensin.infra.cloud_init_wait
     - tensin.infra.apt
+    - tensin.infra.sshd
     - tensin.infra.firewall
     - tensin.infra.router
     - tensin.infra.journald
