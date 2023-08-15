@@ -15,6 +15,7 @@
     - tensin.infra.workspace
 
   vars_files:
+    - ../common.yml
     - ./wg.yml
 
   vars:
@@ -28,8 +29,6 @@
     firewall_ports_udp:
       # WireGuard
       - '{{ wg_listen_port }}'
-
-    docker_logging_driver: local
 
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'

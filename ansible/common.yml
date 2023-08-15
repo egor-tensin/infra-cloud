@@ -1,0 +1,11 @@
+apt_extra_packages:
+  - curl
+  - git
+  - man-db
+  - rsync
+  - screen
+  - tmux
+  - vim
+  - wget
+
+docker_logging_driver: local
