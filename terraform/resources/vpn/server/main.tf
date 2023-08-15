@@ -19,6 +19,7 @@ module "server" {
   name       = "${data.terraform_remote_state.project.outputs.project_stub}-server"
   vpc_id     = data.terraform_remote_state.project.outputs.vpc_id
   ip_address = data.terraform_remote_state.project.outputs.server_ip
+  volume_ids = [data.terraform_remote_state.data.outputs.volume_id]
 
   user     = local.user
   ssh_keys = data.digitalocean_ssh_keys.this.ssh_keys.*.public_key

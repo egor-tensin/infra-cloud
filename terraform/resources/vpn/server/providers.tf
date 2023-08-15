@@ -22,3 +22,13 @@ data "terraform_remote_state" "project" {
     key    = "vpn/project/terraform.tfstate"
   }
 }
+
+data "terraform_remote_state" "data" {
+  backend = "s3"
+
+  config = {
+    region = "eu-central-1"
+    bucket = "tensin-terraform-state"
+    key    = "vpn/data/terraform.tfstate"
+  }
+}
