@@ -11,6 +11,7 @@
     - tensin.infra.journald
     - tensin.infra.linux_status
     - tensin.infra.docker
+    - tensin.infra.digitalocean_volume
     - tensin.infra.wireguard
     - tensin.infra.my_workspace
     - tensin.infra.my_dotfiles
@@ -30,6 +31,9 @@
     firewall_ports_udp:
       # WireGuard
       - '{{ wg_listen_port }}'
+
+    volume_name: vpn-data
+    volume_dir: /mnt/data
 
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
