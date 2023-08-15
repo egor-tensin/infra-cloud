@@ -12,7 +12,8 @@
     - tensin.infra.linux_status
     - tensin.infra.docker
     - tensin.infra.wireguard
-    - tensin.infra.workspace
+    - tensin.infra.my_workspace
+    - tensin.infra.my_dotfiles
 
   vars_files:
     - ../common.yml

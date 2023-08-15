@@ -17,7 +17,8 @@
         mount_dir: '{{ volume_dir }}'
     - tensin.infra.letsencrypt
     - tensin.infra.wireguard
-    - tensin.infra.workspace
+    - tensin.infra.my_workspace
+    - tensin.infra.my_dotfiles
 
   vars_files:
     - ../common.yml
