@@ -1,0 +1,25 @@
+Address vpn.egort.name
+
+Log notice syslog
+
+DataDirectory {{ volume_dir }}/tor
+
+ExitRelay 0
+
+SocksPort {{ wg_addr4 | regex_replace('/\d+$', '') }}:{{ tor_socks_port }}
+
+SocksPolicy accept {{ wg_addr4 }}
+SocksPolicy reject *
+
+ControlPort 0
+DirPort {{ tor_dir_port }}
+ORPort {{ tor_or_port }} IPv4Only
+
+Nickname justiceforall
+
+AccountingStart day 0:00
+AccountingMax 150 GBytes
+AccountingRule out
+
+RelayBandwidthRate 2 MBytes
+RelayBandwidthBurst 4 MBytes

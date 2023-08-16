@@ -13,11 +13,13 @@
     - tensin.infra.docker
     - tensin.infra.digitalocean_volume
     - tensin.infra.wireguard
+    - tor
     - tensin.infra.my_workspace
     - tensin.infra.my_dotfiles
 
   vars_files:
     - ../common.yml
+    - ./tor.yml
     - ./wg.yml
 
   vars:
@@ -28,6 +30,13 @@
       # wg-api-web
       - port: 1234
         source: 192.168.177.1/24
+      # Tor SOCKS
+      - port: '{{ tor_socks_port }}'
+        source: '{{ wg_addr4 }}'
+    firewall_ports_tcp:
+      # Tor
+      - '{{ tor_dir_port }}'
+      - '{{ tor_or_port }}'
     firewall_ports_udp:
       # WireGuard
       - '{{ wg_listen_port }}'

@@ -9,3 +9,5 @@ apt_extra_packages:
   - wget
 
 docker_logging_driver: local
+
+ppa_distro: focal
