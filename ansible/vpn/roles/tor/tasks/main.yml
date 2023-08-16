@@ -25,7 +25,7 @@
         owner: root
         group: root
         mode: '644'
-      notify: Restart Tor
+      notify: tor_restart
 
 - name: Configure systemd service
   become: true
@@ -45,7 +45,7 @@
         owner: root
         group: root
         mode: '644'
-      notify: Restart Tor
+      notify: tor_restart
 
 - name: Install Tor
   become: true
@@ -53,7 +53,7 @@
     name: [tor, deb.torproject.org-keyring]
     state: present
     policy_rc_d: 101
-  notify: Restart Tor
+  notify: tor_restart
 
 - name: Restart systemd service if necessary
   ansible.builtin.meta: flush_handlers

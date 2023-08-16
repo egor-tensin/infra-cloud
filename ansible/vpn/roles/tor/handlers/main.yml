@@ -4,3 +4,4 @@
     daemon_reload: true
     name: '{{ tor_service_name }}'
     state: restarted
+  listen: tor_restart
