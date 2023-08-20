@@ -20,7 +20,7 @@
 
     - name: Create /etc/tor/torrc
       ansible.builtin.template:
-        src: torrc
+        src: torrc.j2
         dest: /etc/tor/torrc
         owner: root
         group: root
@@ -40,7 +40,7 @@
 
     - name: Create service override
       ansible.builtin.template:
-        src: override.conf
+        src: override.conf.j2
         dest: '/etc/systemd/system/{{ tor_service_name }}.service.d/override.conf'
         owner: root
         group: root

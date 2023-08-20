@@ -19,7 +19,7 @@
 
     - name: Create /etc/i2pd/i2pd.conf
       ansible.builtin.template:
-        src: i2pd.conf
+        src: i2pd.conf.j2
         dest: /etc/i2pd/i2pd.conf
         owner: root
         group: root
@@ -39,7 +39,7 @@
 
     - name: Create service override
       ansible.builtin.template:
-        src: override.conf
+        src: override.conf.j2
         dest: /etc/systemd/system/i2pd.service.d
         owner: root
         group: root
