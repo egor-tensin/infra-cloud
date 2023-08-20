@@ -1,4 +1,4 @@
-i2pd_port: 6001
-i2pd_port_http: 6002
-i2pd_port_httpproxy: 6003
-i2pd_port_socksproxy: 6004
+i2pd_port_socks_proxy: 6001
+i2pd_port_http_proxy: 6002
+i2pd_port: 6003
+i2pd_port_console: 6004

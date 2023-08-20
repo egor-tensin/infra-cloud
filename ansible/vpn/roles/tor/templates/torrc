@@ -6,14 +6,14 @@ DataDirectory {{ volume_dir }}/tor
 
 ExitRelay 0
 
-SocksPort {{ wg_addr4 | regex_replace('/\d+$', '') }}:{{ tor_socks_port }}
+SocksPort {{ wg_addr4 | regex_replace('/\d+$', '') }}:{{ tor_port_socks_proxy }}
 
 SocksPolicy accept {{ wg_addr4 }}
 SocksPolicy reject *
 
 ControlPort 0
-DirPort {{ tor_dir_port }}
-ORPort {{ tor_or_port }} IPv4Only
+DirPort {{ tor_port_dir }}
+ORPort {{ tor_port_or }} IPv4Only
 
 Nickname justiceforall
 

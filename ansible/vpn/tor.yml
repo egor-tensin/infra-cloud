@@ -1,3 +1,3 @@
-tor_socks_port: 9050
-tor_dir_port: 9030
-tor_or_port: 9001
+tor_port_socks_proxy: 7001
+tor_port_or: 7002
+tor_port_dir: 7003

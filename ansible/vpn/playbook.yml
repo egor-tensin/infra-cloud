@@ -33,19 +33,19 @@
       - port: 1234
         source: 192.168.177.1/24
       # Tor SOCKS
-      - port: '{{ tor_socks_port }}'
+      - port: '{{ tor_port_socks_proxy }}'
         source: '{{ wg_addr4 }}'
       # i2pd
-      - port: '{{ i2pd_port_http }}'
+      - port: '{{ i2pd_port_console }}'
         source: '{{ wg_addr4 }}'
-      - port: '{{ i2pd_port_httpproxy }}'
+      - port: '{{ i2pd_port_http_proxy }}'
         source: '{{ wg_addr4 }}'
-      - port: '{{ i2pd_port_socksproxy }}'
+      - port: '{{ i2pd_port_socks_proxy }}'
         source: '{{ wg_addr4 }}'
     firewall_ports_tcp:
       # Tor
-      - '{{ tor_dir_port }}'
-      - '{{ tor_or_port }}'
+      - '{{ tor_port_dir }}'
+      - '{{ tor_port_or }}'
       # i2pd
       - '{{ i2pd_port }}'
     firewall_ports_udp:
