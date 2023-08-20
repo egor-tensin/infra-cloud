@@ -55,5 +55,15 @@
     policy_rc_d: 101
   notify: tor_restart
 
+- name: Fix permissions on data directory
+  become: true
+  ansible.builtin.file:
+    path: '{{ tor_data_dir }}'
+    state: directory
+    recurse: true
+    owner: debian-tor
+    group: debian-tor
+  notify: tor_restart
+
 - name: Restart systemd service if necessary
   ansible.builtin.meta: flush_handlers

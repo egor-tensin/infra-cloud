@@ -1,1 +1,2 @@
 tor_service_name: tor@default
+tor_data_dir: '{{ volume_dir }}/tor'
