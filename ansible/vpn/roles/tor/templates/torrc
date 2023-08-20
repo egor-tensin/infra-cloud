@@ -1,4 +1,5 @@
 Address vpn.egort.name
+{% set proxy_addr = wg_addr4 | regex_replace('/\d+$', '') %}
 
 Log notice syslog
 
@@ -6,7 +7,7 @@ DataDirectory {{ volume_dir }}/tor
 
 ExitRelay 0
 
-SocksPort {{ wg_addr4 | regex_replace('/\d+$', '') }}:{{ tor_port_socks_proxy }}
+SocksPort {{ proxy_addr }}:{{ tor_port_socks_proxy }}
 
 SocksPolicy accept {{ wg_addr4 }}
 SocksPolicy reject *
