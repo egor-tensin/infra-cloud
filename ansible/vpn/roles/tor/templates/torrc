@@ -1,3 +1,5 @@
+{{ ansible_managed | comment }}
+
 Address vpn.egort.name
 {% set proxy_addr = wg_addr4 | regex_replace('/\d+$', '') %}
 
