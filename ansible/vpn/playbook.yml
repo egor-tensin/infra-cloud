@@ -14,12 +14,14 @@
     - tensin.infra.digitalocean_volume
     - tensin.infra.wireguard
     - tor
+    - i2pd
     - tensin.infra.my_workspace
     - tensin.infra.my_dotfiles
 
   vars_files:
     - ../common.yml
     - ./tor.yml
+    - ./i2pd.yml
     - ./wg.yml
 
   vars:
@@ -33,10 +35,19 @@
       # Tor SOCKS
       - port: '{{ tor_socks_port }}'
         source: '{{ wg_addr4 }}'
+      # i2pd
+      - port: '{{ i2pd_port_http }}'
+        source: '{{ wg_addr4 }}'
+      - port: '{{ i2pd_port_httpproxy }}'
+        source: '{{ wg_addr4 }}'
+      - port: '{{ i2pd_port_socksproxy }}'
+        source: '{{ wg_addr4 }}'
     firewall_ports_tcp:
       # Tor
       - '{{ tor_dir_port }}'
       - '{{ tor_or_port }}'
+      # i2pd
+      - '{{ i2pd_port }}'
     firewall_ports_udp:
       # WireGuard
       - '{{ wg_listen_port }}'

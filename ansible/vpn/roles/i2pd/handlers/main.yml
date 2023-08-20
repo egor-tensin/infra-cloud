@@ -1,0 +1,7 @@
+- name: Restart i2pd
+  become: true
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+    name: i2pd
+    state: restarted
+  listen: i2pd_restart
