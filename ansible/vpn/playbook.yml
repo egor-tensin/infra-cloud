@@ -13,16 +13,16 @@
     - tensin.infra.docker
     - tensin.infra.digitalocean_volume
     - tensin.infra.wireguard
-    - tor
     - i2pd
+    - tor
     - tensin.infra.my_workspace
     - tensin.infra.my_dotfiles
 
   vars_files:
     - ../common.yml
-    - ./tor.yml
-    - ./i2pd.yml
-    - ./wg.yml
+    - ./vars/i2pd.yml
+    - ./vars/tor.yml
+    - ./vars/wg.yml
 
   vars:
     firewall_ports4_tcp:

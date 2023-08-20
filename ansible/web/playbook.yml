@@ -22,7 +22,7 @@
 
   vars_files:
     - ../common.yml
-    - ./wg.yml
+    - ./vars/wg.yml
 
   vars:
     firewall_ports_tcp:
