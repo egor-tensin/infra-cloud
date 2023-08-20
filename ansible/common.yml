@@ -10,4 +10,4 @@ apt_extra_packages:
 
 docker_logging_driver: local
 
-ppa_distro: focal
+ppa_distro: jammy

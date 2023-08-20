@@ -5,7 +5,6 @@
     ppa_owner: purplei2p
     ppa_name: i2pd
     ppa_key: A0592679C89831BBC7E5D822625964081B0340BA
-    ppa_distro: jammy
 
 - name: Configure i2pd
   become: true

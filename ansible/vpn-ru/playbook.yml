@@ -31,6 +31,9 @@
       # WireGuard
       - '{{ wg_listen_port }}'
 
+    # Debian 11 means Focal.
+    ppa_repo: focal
+
     workspace_projects:
       - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn-ru.git'
         name: server
