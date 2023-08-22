@@ -13,6 +13,7 @@
     - tensin.infra.docker
     - tensin.infra.digitalocean_volume
     - tensin.infra.wireguard
+    - dante
     - i2pd
     - tor
     - tensin.infra.my_workspace
@@ -20,6 +21,7 @@
 
   vars_files:
     - ../common.yml
+    - ./vars/dante.yml
     - ./vars/i2pd.yml
     - ./vars/tor.yml
     - ./vars/wg.yml
@@ -32,6 +34,8 @@
       # wg-api-web
       - port: 1234
         source: 192.168.177.1/24
+      - port: '{{ dante_port }}'
+        source: '{{ wg_addr4 }}'
       # Tor SOCKS
       - port: '{{ tor_port_socks_proxy }}'
         source: '{{ wg_addr4 }}'

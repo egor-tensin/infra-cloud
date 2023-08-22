@@ -1,0 +1,41 @@
+- name: Configure Dante
+  become: true
+  block:
+    - name: Create /etc/danted.conf
+      ansible.builtin.template:
+        src: danted.conf.j2
+        dest: /etc/danted.conf
+        owner: root
+        group: root
+        mode: '644'
+      notify: dante_restart
+
+- name: Configure systemd service
+  become: true
+  block:
+    - name: Create override directory
+      ansible.builtin.file:
+        path: /etc/systemd/system/danted.service.d
+        state: directory
+        owner: root
+        group: root
+        mode: '755'
+
+    - name: Create service override
+      ansible.builtin.template:
+        src: override.conf.j2
+        dest: /etc/systemd/system/danted.service.d/override.conf
+        owner: root
+        group: root
+        mode: '644'
+      notify: dante_restart
+
+- name: Install Dante
+  become: true
+  ansible.builtin.apt:
+    name: dante-server
+    policy_rc_d: 101
+  notify: dante_restart
+
+- name: Restart systemd service if necessary
+  ansible.builtin.meta: flush_handlers

@@ -1,0 +1,29 @@
+{{ ansible_managed | comment }}
+
+logoutput: syslog
+
+internal: {{ wg_name }} port = {{ dante_port }}
+external: eth0
+
+socksmethod: none
+clientmethod: none
+
+user.privileged: proxy
+user.unprivileged: nobody
+
+client pass {
+    from: {{ wg_addr4 }} to: 0.0.0.0/0
+    log: error connect disconnect
+}
+client block {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: connect error
+}
+socks pass {
+    from: {{ wg_addr4 }} to: 0.0.0.0/0
+    log: error connect disconnect
+}
+socks block {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: connect error
+}
