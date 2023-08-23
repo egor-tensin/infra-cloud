@@ -53,6 +53,10 @@ wg_addr6: '{{ wg_prefix6 }}.254/48'
 wg_router: true
 
 wg_peers:
+  # tensin-vpn-ru
+  - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
+    preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
+    allowed_ips: '{{ wg_prefix4 }}.253/32, {{ wg_prefix6 }}.253/128'
   # tensin-laptop2
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
     preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
@@ -73,10 +77,6 @@ wg_peers:
   - public_key: nE628227u2v0cUISn81aMtsKnrSkO/tqBE7bClyYU3Y=
     preshared_key: 6vrXlhQv68jNT+Otu9v+7vt1eKg52J8oGHxA0EoWtp0=
     allowed_ips: '{{ wg_prefix4 }}.12/32, {{ wg_prefix6 }}.12/128'
-  # tensin-vpn-ru
-  - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
-    preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
-    allowed_ips: '{{ wg_prefix4 }}.13/32, {{ wg_prefix6 }}.13/128'
   # daria-ipad
   - public_key: RJjN5vSiBFUTzZrKSR+27FBGvSn41CmGBMgQShiOGAc=
     preshared_key: Bu69rGZPpbuh0xlwYsCXwYICG3YVO9jWKZw8Vytt8jE=
