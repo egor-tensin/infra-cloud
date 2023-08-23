@@ -1,7 +1,8 @@
 {{ ansible_managed | comment }}
 
-Address vpn.egort.name
-{% set proxy_addr = wg_addr4 | regex_replace('/\d+$', '') %}
+{% if tor_address_external is defined %}
+Address {{ tor_address_external }}
+{% endif %}
 
 Log notice syslog
 
@@ -9,16 +10,15 @@ DataDirectory {{ tor_data_dir }}
 
 ExitRelay 0
 
-SocksPort {{ proxy_addr }}:{{ tor_port_socks_proxy }}
-
-SocksPolicy accept {{ wg_addr4 }}
-SocksPolicy reject *
+SocksPort {{ tor_address_internal }}:{{ tor_port_socks_proxy }}
 
 ControlPort 0
 DirPort {{ tor_port_dir }}
 ORPort {{ tor_port_or }} IPv4Only
 
-Nickname justiceforall
+{% if tor_nickname is defined %}
+Nickname {{ tor_nickname }}
+{% endif %}
 
 AccountingStart day 0:00
 AccountingMax 150 GBytes

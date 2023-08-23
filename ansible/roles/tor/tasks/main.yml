@@ -32,7 +32,7 @@
   block:
     - name: Create override directory
       ansible.builtin.file:
-        path: '/etc/systemd/system/{{ tor_service_name }}.service.d'
+        path: '/etc/systemd/system/tor@default.service.d'
         state: directory
         owner: root
         group: root
@@ -41,7 +41,7 @@
     - name: Create service override
       ansible.builtin.template:
         src: override.conf.j2
-        dest: '/etc/systemd/system/{{ tor_service_name }}.service.d/data_dir.conf'
+        dest: '/etc/systemd/system/tor@default.service.d/data_dir.conf'
         owner: root
         group: root
         mode: '644'
