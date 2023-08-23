@@ -1,9 +1,11 @@
 apt_extra_packages:
   - curl
+  - dnsutils
   - git
   - man-db
   - rsync
   - screen
+  - telnet
   - tmux
   - vim
   - wget
