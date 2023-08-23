@@ -1,0 +1,9 @@
+{{ ansible_managed | comment }}
+
+[Service]
+# Tor authors went to far in hardening the systemd service definition IMO;
+# I could barely make it work with a custom DataDirectory:
+# https://github.com/raspiblitz/raspiblitz/issues/2531
+
+ReadWritePaths={{ digitalocean_volume_dir }}/tor
+AppArmorProfile=

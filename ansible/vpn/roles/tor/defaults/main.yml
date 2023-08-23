@@ -1,6 +1,0 @@
-tor_port_socks_proxy: 9050
-tor_port_or: 9001
-tor_port_dir: 9030
-
-tor_service_name: tor@default
-tor_data_dir: '{{ volume_dir }}/tor'

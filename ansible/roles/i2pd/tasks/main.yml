@@ -1,0 +1,37 @@
+- name: Set up repository
+  ansible.builtin.include_role:
+    name: tensin.infra.ppa
+  vars:
+    ppa_owner: purplei2p
+    ppa_name: i2pd
+    ppa_key: A0592679C89831BBC7E5D822625964081B0340BA
+
+- name: Configure i2pd
+  become: true
+  block:
+    - name: Create /etc/i2pd
+      ansible.builtin.file:
+        path: /etc/i2pd
+        state: directory
+        owner: root
+        group: root
+        mode: '755'
+
+    - name: Create /etc/i2pd/i2pd.conf
+      ansible.builtin.template:
+        src: i2pd.conf.j2
+        dest: /etc/i2pd/i2pd.conf
+        owner: root
+        group: root
+        mode: '644'
+      notify: i2pd_restart
+
+- name: Install i2pd
+  become: true
+  ansible.builtin.apt:
+    name: i2pd
+    policy_rc_d: 101
+  notify: i2pd_restart
+
+- name: Restart systemd service if necessary
+  ansible.builtin.meta: flush_handlers

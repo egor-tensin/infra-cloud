@@ -1,0 +1,69 @@
+- name: Enable repository
+  ansible.builtin.include_role:
+    name: tensin.infra.apt_repo
+  vars:
+    apt_repo_name: tor
+    apt_repo_url: https://deb.torproject.org/torproject.org
+    apt_repo_key_url: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
+    apt_repo_key_dearmor: true
+
+- name: Configure Tor
+  become: true
+  block:
+    - name: Create /etc/tor
+      ansible.builtin.file:
+        path: /etc/tor
+        state: directory
+        owner: root
+        group: root
+        mode: '755'
+
+    - name: Create /etc/tor/torrc
+      ansible.builtin.template:
+        src: torrc.j2
+        dest: /etc/tor/torrc
+        owner: root
+        group: root
+        mode: '644'
+      notify: tor_restart
+
+- name: Configure systemd service
+  become: true
+  block:
+    - name: Create override directory
+      ansible.builtin.file:
+        path: '/etc/systemd/system/{{ tor_service_name }}.service.d'
+        state: directory
+        owner: root
+        group: root
+        mode: '755'
+
+    - name: Create service override
+      ansible.builtin.template:
+        src: override.conf.j2
+        dest: '/etc/systemd/system/{{ tor_service_name }}.service.d/data_dir.conf'
+        owner: root
+        group: root
+        mode: '644'
+      notify: tor_restart
+
+- name: Install Tor
+  become: true
+  ansible.builtin.apt:
+    name: [tor, deb.torproject.org-keyring]
+    state: present
+    policy_rc_d: 101
+  notify: tor_restart
+
+- name: Fix permissions on data directory
+  become: true
+  ansible.builtin.file:
+    path: '{{ tor_data_dir }}'
+    state: directory
+    recurse: true
+    owner: debian-tor
+    group: debian-tor
+  notify: tor_restart
+
+- name: Restart systemd service if necessary
+  ansible.builtin.meta: flush_handlers

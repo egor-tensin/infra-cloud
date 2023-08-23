@@ -1,0 +1,73 @@
+- name: General maintenance
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.cloud_init_wait
+    - tensin.infra.apt
+    - tensin.infra.sshd
+    - tensin.infra.firewall
+    - tensin.infra.linux_status
+    - tensin.infra.journald
+
+- name: Attach volumes
+  hosts: digitalocean_volume
+  gather_facts: false
+  roles:
+    - tensin.infra.digitalocean_volume
+    - role: tensin.infra.systemd_depend_mount
+      vars:
+        systemd_depend_mount_dir: '{{ digitalocean_volume_dir }}'
+        systemd_depend_mount_services: '{{ digitalocean_volume_dependants }}'
+
+- name: Set up Docker
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.docker
+
+- name: Enable traffic routing
+  hosts: router
+  gather_facts: false
+  roles:
+    - tensin.infra.router
+
+- name: Set up WireGuard
+  hosts: wireguard
+  gather_facts: false
+  roles:
+    - tensin.infra.wireguard
+    - role: tensin.infra.systemd_depend_iface
+      vars:
+        systemd_depend_iface_name: '{{ wg_name }}'
+        systemd_depend_iface_services: '{{ wg_dependants }}'
+
+- name: Set up Let's Encrypt certificates
+  hosts: letsencrypt
+  gather_facts: false
+  roles:
+    - tensin.infra.letsencrypt
+
+- name: Set up proxy server
+  hosts: proxy
+  gather_facts: false
+  roles:
+    - dante
+
+- name: Set up i2pd
+  hosts: i2pd
+  gather_facts: false
+  roles:
+    - i2pd
+
+- name: Set up Tor
+  hosts: tor
+  gather_facts: false
+  roles:
+    - tor
+
+- name: Update my workspace
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.my_workspace
+    - tensin.infra.my_dotfiles

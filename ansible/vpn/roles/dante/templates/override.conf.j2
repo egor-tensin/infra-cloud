@@ -1,6 +1,0 @@
-{{ ansible_managed | comment }}
-
-[Unit]
-# Dante binds to the WireGuard interface.
-BindsTo=sys-devices-virtual-net-{{ wg_name }}.device
-After=sys-devices-virtual-net-{{ wg_name }}.device
