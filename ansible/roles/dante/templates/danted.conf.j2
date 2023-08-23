@@ -2,8 +2,8 @@
 
 logoutput: syslog
 
-internal: {{ dante_internal_iface }} port = {{ dante_port }}
-external: {{ dante_external_iface }}
+internal: {{ dante_iface_internal }} port = {{ dante_port }}
+external: {{ dante_iface_external }}
 
 socksmethod: none
 clientmethod: none
