@@ -2,8 +2,8 @@
 
 logoutput: syslog
 
-internal: {{ wg_name }} port = {{ dante_port }}
-external: eth0
+internal: {{ dante_internal_iface }} port = {{ dante_port }}
+external: {{ dante_external_iface }}
 
 socksmethod: none
 clientmethod: none
@@ -12,7 +12,7 @@ user.privileged: proxy
 user.unprivileged: nobody
 
 client pass {
-    from: {{ wg_addr4 }} to: 0.0.0.0/0
+    from: {{ dante_allowed_ips }} to: 0.0.0.0/0
     log: error connect disconnect
 }
 client block {
@@ -20,7 +20,7 @@ client block {
     log: connect error
 }
 socks pass {
-    from: {{ wg_addr4 }} to: 0.0.0.0/0
+    from: {{ dante_allowed_ips }} to: 0.0.0.0/0
     log: error connect disconnect
 }
 socks block {
