@@ -31,6 +31,8 @@ firewall_ports_udp:
 digitalocean_volume_name: vpn-data
 digitalocean_volume_dir: /mnt/data
 
+i2pd_address_internal: '{{ wg_addr4 | regex_replace("/\d+$", "") }}'
+
 tor_address_external: '{{ ansible_host }}'
 tor_address_internal: '{{ wg_addr4 | regex_replace("/\d+$", "") }}'
 tor_nickname: justiceforall
