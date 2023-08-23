@@ -1,5 +1,5 @@
 firewall_ports_tcp:
-  # Gitea's SSH server
+  # Gitea
   - 22
   # server-tensin-web
   - 80
