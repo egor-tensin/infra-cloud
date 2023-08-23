@@ -11,3 +11,6 @@ apt_extra_packages:
   - wget
 
 docker_logging_driver: local
+
+systemd_depend_mount_items: []
+systemd_depend_iface_items: []

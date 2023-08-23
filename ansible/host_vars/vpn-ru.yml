@@ -12,6 +12,10 @@ firewall_ports_udp:
   # WireGuard
   - '{{ wg_listen_port }}'
 
+systemd_depend_iface_items:
+  - name: '{{ wg_name }}'
+    services: [danted]
+
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn-ru.git'
     name: server
@@ -20,7 +24,6 @@ wg_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
 wg_addr4: '{{ wg_prefix4 }}.13/24'
 wg_addr6: '{{ wg_prefix6 }}.13/48'
 wg_firewall: true
-wg_dependants: [danted]
 
 wg_peers:
   # tensin-vpn

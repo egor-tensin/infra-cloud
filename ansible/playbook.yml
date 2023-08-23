@@ -14,10 +14,6 @@
   gather_facts: false
   roles:
     - tensin.infra.digitalocean_volume
-    - role: tensin.infra.systemd_depend_mount
-      vars:
-        systemd_depend_mount_dir: '{{ digitalocean_volume_dir }}'
-        systemd_depend_mount_services: '{{ digitalocean_volume_dependants }}'
 
 - name: Enable traffic routing
   hosts: router
@@ -29,10 +25,30 @@
   gather_facts: false
   roles:
     - tensin.infra.wireguard
-    - role: tensin.infra.systemd_depend_iface
+
+- name: Set up service dependencies
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Set up filesystem mount dependencies
+      ansible.builtin.include_role:
+        name: tensin.infra.systemd_depend_mount
       vars:
-        systemd_depend_iface_name: '{{ wg_name }}'
-        systemd_depend_iface_services: '{{ wg_dependants }}'
+        systemd_depend_mount_dir: '{{ depend_mount_item.dir }}'
+        systemd_depend_mount_services: '{{ depend_mount_item.services }}'
+      loop: '{{ systemd_depend_mount_items }}'
+      loop_control:
+        loop_var: depend_mount_item
+
+    - name: Set up network interface dependencies
+      ansible.builtin.include_role:
+        name: tensin.infra.systemd_depend_iface
+      vars:
+        systemd_depend_iface_name: '{{ depend_iface_item.name }}'
+        systemd_depend_iface_services: '{{ depend_iface_item.services }}'
+      loop: '{{ systemd_depend_iface_items }}'
+      loop_control:
+        loop_var: depend_iface_item
 
 - name: Set up Docker
   hosts: all
