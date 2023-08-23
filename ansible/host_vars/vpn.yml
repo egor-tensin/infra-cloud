@@ -50,7 +50,7 @@ my_workspace_projects:
 wg_private_key: AL2RI6nHtcT6ErWJi1BgzxWQf38KcTmfyr1nBapFAGY=
 wg_addr4: '{{ wg_prefix4 }}.254/24'
 wg_addr6: '{{ wg_prefix6 }}.254/48'
-wg_firewall: true
+wg_router: true
 
 wg_peers:
   # tensin-laptop2

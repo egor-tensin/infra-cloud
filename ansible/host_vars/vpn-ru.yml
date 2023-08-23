@@ -23,7 +23,7 @@ my_workspace_projects:
 wg_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
 wg_addr4: '{{ wg_prefix4 }}.13/24'
 wg_addr6: '{{ wg_prefix6 }}.13/48'
-wg_firewall: true
+wg_router: true
 
 wg_peers:
   # tensin-vpn

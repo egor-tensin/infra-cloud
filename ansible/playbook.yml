@@ -15,11 +15,6 @@
   roles:
     - tensin.infra.digitalocean_volume
 
-- name: Enable traffic routing
-  hosts: router
-  gather_facts: false
-  roles:
-    - tensin.infra.router
 - name: Set up WireGuard
   hosts: wireguard
   gather_facts: false
