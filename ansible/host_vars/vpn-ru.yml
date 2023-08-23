@@ -12,7 +12,7 @@ firewall_ports_udp:
   # WireGuard
   - '{{ wg_listen_port }}'
 
-workspace_projects:
+my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn-ru.git'
     name: server
 

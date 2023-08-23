@@ -37,7 +37,7 @@ tor_address_internal: '{{ wg_addr4 | regex_replace("/\d+$", "") }}'
 tor_nickname: justiceforall
 tor_data_dir: '{{ digitalocean_volume_dir }}/tor'
 
-workspace_projects:
+my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
     name: server
 

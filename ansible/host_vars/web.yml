@@ -19,7 +19,7 @@ letsencrypt_domains:
       - shadow.egort.name
       - stash.egort.name
 
-workspace_projects:
+my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
     name: server
 
