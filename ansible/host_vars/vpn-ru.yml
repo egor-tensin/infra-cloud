@@ -52,7 +52,7 @@ wg_peers:
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
     preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
     allowed_ips: '{{ wg_prefix4 }}.16/32, {{ wg_prefix6 }}.16/128'
-  # Mac
+  # Amazon Mac
   - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
     preshared_key: ON32YlGCgXyuBGgaYSjRxvUeLQU4bBVYJR07KG/rBvE=
     allowed_ips: '{{ wg_prefix4 }}.17/32, {{ wg_prefix6 }}.17/128'
