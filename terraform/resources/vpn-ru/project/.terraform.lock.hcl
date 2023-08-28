@@ -5,6 +5,7 @@ provider "registry.terraform.io/yandex-cloud/yandex" {
   version = "0.97.0"
   hashes = [
     "h1:+ZfGaQXDIhfZ6/1ltrFpAEWFHmN0Vz9LwAE69my/KKc=",
+    "h1:kvyOaU8ZtUlM3PCa1sLqNObsvhgZj1VnqK+by3YDtUA=",
     "zh:21a0685a11d26eee3a2a4a1b681e4abba96e81d8e75bf012dff732e19e1b27ed",
     "zh:24f53c3fc64033b121679511f2ae51b3407817451bd209a446579513dc87401d",
     "zh:265e53bac9a71dd50485d2163da53f3f91c4005cb8f065a81f1b50143dddc07e",
