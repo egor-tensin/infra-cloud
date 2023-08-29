@@ -7,10 +7,7 @@ firewall_ports_tcp:
 
 digitalocean_volume_name: web-data
 digitalocean_volume_dir: /mnt/data
-
-systemd_depend_mount_items:
-  - dir: '{{ digitalocean_volume_dir }}'
-    services: [docker]
+digitalocean_volume_dependent_services: [docker]
 
 letsencrypt_domains:
   - name: egort.name

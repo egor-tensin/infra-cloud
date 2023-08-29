@@ -30,16 +30,10 @@ firewall_ports_udp:
 
 digitalocean_volume_name: vpn-data
 digitalocean_volume_dir: /mnt/data
+digitalocean_volume_dependent_services: [tor@default]
 
 tor_nickname: justiceforall
 tor_data_dir: '{{ digitalocean_volume_dir }}/tor'
-
-systemd_depend_mount_items:
-  - dir: '{{ digitalocean_volume_dir }}'
-    services: ['tor@default']
-systemd_depend_iface_items:
-  - name: '{{ wg_name }}'
-    services: [danted, i2pd, 'tor@default']
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
@@ -91,3 +85,5 @@ wg_peers:
   - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
     preshared_key: pOl3UphYCPZBQTNui74HqQgGgvdVmnd313dnniqHqWw=
     allowed_ips: '{{ wg_prefix4 }}.17/32, {{ wg_prefix6 }}.17/128'
+
+wg_dependent_services: [danted, i2pd, tor@default]
