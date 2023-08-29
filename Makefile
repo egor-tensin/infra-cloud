@@ -32,3 +32,15 @@ plan: plan/state
 plan: plan/resources/vpn-ru/project plan/resources/vpn-ru/server
 plan: plan/resources/vpn/project plan/resources/vpn/data plan/resources/vpn/server
 plan: plan/resources/web/project plan/resources/web/data plan/resources/web/server
+
+.PHONY: configure
+configure:
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo ansible-playbook
+	@echo -----------------------------------------------------------------
+	@cd -- ansible && \
+		ansible-playbook playbook.yml
+
+.PHONY: config
+config: configure
