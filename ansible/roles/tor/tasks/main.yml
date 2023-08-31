@@ -1,12 +1,3 @@
-- name: Enable repository
-  ansible.builtin.include_role:
-    name: tensin.infra.apt_repo
-  vars:
-    apt_repo_name: tor
-    apt_repo_url: https://deb.torproject.org/torproject.org
-    apt_repo_key_url: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
-    apt_repo_key_dearmor: true
-
 - name: Configure Tor
   become: true
   block:
