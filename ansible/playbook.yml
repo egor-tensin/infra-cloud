@@ -21,21 +21,25 @@
   gather_facts: false
   roles:
     - tensin.infra.docker
+
 - name: Set up Let's Encrypt certificates
   hosts: letsencrypt
   gather_facts: false
   roles:
     - tensin.infra.letsencrypt
+
 - name: Set up proxy server
   hosts: proxy
   gather_facts: false
   roles:
     - dante
+
 - name: Set up i2pd
   hosts: i2pd
   gather_facts: false
   roles:
     - i2pd
+
 - name: Set up Tor
   hosts: tor
   gather_facts: false
