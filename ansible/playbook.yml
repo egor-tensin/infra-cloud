@@ -2,12 +2,7 @@
   hosts: all
   gather_facts: false
   roles:
-    - tensin.infra.cloud_init_wait
-    - tensin.infra.apt
-    - tensin.infra.sshd
-    - tensin.infra.firewall
-    - tensin.infra.linux_status
-    - tensin.infra.journald
+    - tensin.infra.debian_cloud_server
 
 - name: Attach volumes
   hosts: digitalocean_volume
