@@ -14,6 +14,8 @@
   become: true
   ansible.builtin.apt:
     name: dante-server
+    state: present
+    install_recommends: false
     policy_rc_d: 101
   notify: dante_restart
 

@@ -41,8 +41,12 @@
 - name: Install Tor
   become: true
   ansible.builtin.apt:
-    name: [tor, deb.torproject.org-keyring]
+    name:
+      - tor
+      - tor-geoipdb
+      - deb.torproject.org-keyring
     state: present
+    install_recommends: false
     policy_rc_d: 101
   notify: tor_restart
 

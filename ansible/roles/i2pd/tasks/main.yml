@@ -22,6 +22,8 @@
   become: true
   ansible.builtin.apt:
     name: i2pd
+    state: present
+    install_recommends: false
     policy_rc_d: 101
   notify: i2pd_restart
 
