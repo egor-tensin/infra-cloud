@@ -59,11 +59,15 @@ reboot:
 
 tf_show_id := terraform output -raw id
 
-do_start := doctl --context infra compute droplet-action power-on --format Status,CompletedAt --wait
-do_stop  := doctl --context infra compute droplet-action shutdown --format Status,CompletedAt --wait
+doctl := doctl --context infra
+yc    := yc --profile infra
 
-yc_start := yc --profile infra compute instance start --id
-yc_stop  := yc --profile infra compute instance stop  --id
+do_args  := --format Status,CompletedAt --wait
+do_start := $(doctl) compute droplet-action power-on $(do_args)
+do_stop  := $(doctl) compute droplet-action shutdown $(do_args)
+
+yc_start := $(yc) compute instance start --id
+yc_stop  := $(yc) compute instance stop  --id
 
 digitalocean/%/start: DO
 	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
