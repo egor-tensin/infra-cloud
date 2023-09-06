@@ -65,26 +65,23 @@ do_stop  := doctl --context infra compute droplet-action shutdown --format Statu
 yc_start := yc --profile infra compute instance start --id
 yc_stop  := yc --profile infra compute instance stop  --id
 
-start/digitalocean/%: DO
+digitalocean/%/start: DO
 	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
 		$(do_start) "$$id"
 
-stop/digitalocean/%: DO
+digitalocean/%/stop: DO
 	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
 		$(do_stop) "$$id"
 
-start/yandex/%: DO
+yandex_cloud/%/start: DO
 	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
 		$(yc_start) "$$id"
 
-stop/yandex/%: DO
+yandex_cloud/%/stop: DO
 	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
 		$(yc_stop) "$$id"
 
-start/web: start/digitalocean/web
-stop/web:  stop/digitalocean/web
-start/vpn: start/digitalocean/vpn
-stop/vpn:  stop/digitalocean/vpn
+vpn/%: digitalocean/vpn/% ;
+web/%: digitalocean/web/% ;
 
-start/vpn-ru: start/yandex/vpn-ru
-stop/vpn-ru:  stop/yandex/vpn-ru
+vpn-ru/%: yandex_cloud/vpn-ru/% ;
