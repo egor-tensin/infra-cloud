@@ -15,9 +15,9 @@ init/%: DO
 
 .PHONY: init
 init: init/state
-init: init/resources/vpn-ru/project init/resources/vpn-ru/server
-init: init/resources/vpn/project init/resources/vpn/data init/resources/vpn/server
-init: init/resources/web/project init/resources/web/data init/resources/web/server
+init: init/vpn-ru/project init/vpn-ru/server
+init: init/vpn/project init/vpn/data init/vpn/server
+init: init/web/project init/web/data init/web/server
 
 plan/%: DO
 	@echo
@@ -29,9 +29,9 @@ plan/%: DO
 
 .PHONY: plan
 plan: plan/state
-plan: plan/resources/vpn-ru/project plan/resources/vpn-ru/server
-plan: plan/resources/vpn/project plan/resources/vpn/data plan/resources/vpn/server
-plan: plan/resources/web/project plan/resources/web/data plan/resources/web/server
+plan: plan/vpn-ru/project plan/vpn-ru/server
+plan: plan/vpn/project plan/vpn/data plan/vpn/server
+plan: plan/web/project plan/web/data plan/web/server
 
 LIMIT ?= all
 $(eval $(call noexpand,LIMIT))
@@ -66,19 +66,19 @@ yc_start := yc --profile infra compute instance start --id
 yc_stop  := yc --profile infra compute instance stop  --id
 
 digitalocean/%/start: DO
-	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
 		$(do_start) "$$id"
 
 digitalocean/%/stop: DO
-	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
 		$(do_stop) "$$id"
 
 yandex_cloud/%/start: DO
-	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
 		$(yc_start) "$$id"
 
 yandex_cloud/%/stop: DO
-	@id="$$( cd -- '$(call escape,terraform/resources/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
 		$(yc_stop) "$$id"
 
 vpn/%: digitalocean/vpn/% ;
