@@ -4,6 +4,10 @@ firewall_ports_tcp:
   # server-tensin-web
   - 80
   - 443
+firewall_ports4_tcp:
+  # wg-api-web
+  - port: 1234
+    source: 192.168.177.0/24
 
 digitalocean_volume_name: web-data
 digitalocean_volume_dir: /mnt/data
