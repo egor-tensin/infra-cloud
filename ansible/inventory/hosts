@@ -15,9 +15,6 @@ web
 web
 vpn
 
-[router]
-vpn
-vpn-ru
 [wireguard]
 web
 vpn
@@ -25,11 +22,14 @@ vpn-ru
 
 [letsencrypt]
 web
+
 [proxy]
 vpn
 vpn-ru
+
 [i2pd]
 vpn
+
 [tor]
 vpn
 
