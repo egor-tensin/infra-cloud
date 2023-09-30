@@ -16,16 +16,20 @@
         owner: root
         group: root
         mode: '644'
-      notify: i2pd_restart
+      notify: i2pd_configured
+
+- name: Restart i2pd service if necessary
+  ansible.builtin.meta: flush_handlers
 
 - name: Install i2pd
   become: true
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: i2pd
     state: present
-    install_recommends: false
-    policy_rc_d: 101
-  notify: i2pd_restart
 
-- name: Restart systemd service if necessary
-  ansible.builtin.meta: flush_handlers
+- name: Enable & start i2pd service
+  become: true
+  ansible.builtin.systemd_service:
+    name: i2pd
+    enabled: true
+    state: started

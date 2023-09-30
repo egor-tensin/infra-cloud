@@ -8,16 +8,20 @@
         owner: root
         group: root
         mode: '644'
-      notify: dante_restart
+      notify: dante_configured
+
+- name: Restart Dante service if necessary
+  ansible.builtin.meta: flush_handlers
 
 - name: Install Dante
   become: true
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: dante-server
     state: present
-    install_recommends: false
-    policy_rc_d: 101
-  notify: dante_restart
 
-- name: Restart systemd service if necessary
-  ansible.builtin.meta: flush_handlers
+- name: Enable & start Dante service
+  become: true
+  ansible.builtin.systemd_service:
+    name: danted
+    enabled: true
+    state: started

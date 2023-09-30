@@ -1,7 +1,13 @@
-- name: Restart Tor
+- name: Collect service facts
+  ansible.builtin.service_facts:
+  listen: tor_configured
+
+- name: Restart Tor service
   become: true
+  when: |
+    'tor@default.service' in ansible_facts.services and ansible_facts.services['tor@default.service'].state == 'running'
   ansible.builtin.systemd_service:
     daemon_reload: true
     name: 'tor@default'
     state: restarted
-  listen: tor_restart
+  listen: tor_configured

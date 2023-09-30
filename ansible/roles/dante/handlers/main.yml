@@ -1,7 +1,12 @@
-- name: Restart Dante
+- name: Collect service facts
+  ansible.builtin.service_facts:
+  listen: dante_configured
+
+- name: Restart Dante service
   become: true
+  when: |
+    'danted.service' in ansible_facts.services and ansible_facts.services['danted.service'].state == 'running'
   ansible.builtin.systemd_service:
-    daemon_reload: true
     name: danted
     state: restarted
-  listen: dante_restart
+  listen: dante_configured
