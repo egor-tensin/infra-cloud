@@ -5,19 +5,25 @@ DO:
 
 tf_backend_config := $(abspath ./terraform/config.s3.tfbackend)
 
+tf_init_args :=
+
 init/%: DO
 	@echo
 	@echo -----------------------------------------------------------------
 	@echo 'terraform init: $*'
 	@echo -----------------------------------------------------------------
 	@cd -- 'terraform/$*/' && \
-		terraform init '-backend-config=$(call escape,$(tf_backend_config))'
+		terraform init $(tf_init_args) '-backend-config=$(call escape,$(tf_backend_config))'
 
 .PHONY: init
 init: init/state
 init: init/vpn-ru/project init/vpn-ru/server
 init: init/vpn/project init/vpn/data init/vpn/server
 init: init/web/project init/web/data init/web/server
+
+.PHONY: upgrade
+upgrade: tf_init_args := -upgrade
+upgrade: init
 
 plan/%: DO
 	@echo
