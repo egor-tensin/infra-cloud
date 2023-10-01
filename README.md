@@ -54,3 +54,41 @@ Don't forget to remove the authorized key file!
 
 * Otherwise, you need to set `YC_SERVICE_ACCOUNT_KEY_FILE` to the path of the
 authorized key JSON file.
+
+Terraform
+---------
+
+* If you configured the CLIs, you can do
+
+      . setenv.sh
+
+  This will set the required environment variables.
+
+* To initialize the modules, run:
+
+      make init
+
+Usage
+=====
+
+Terraform
+---------
+
+* Check if the infrastructure matches configuration:
+
+      make plan
+
+Ansible
+-------
+
+* Run the playbook for all hosts:
+
+      make config
+
+* Run the playbook for a subset of hosts:
+
+      make config LIMIT=PATTERN
+
+* Reboot a host:
+
+      make reboot LIMIT=HOST
