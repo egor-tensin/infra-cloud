@@ -48,7 +48,7 @@ configure:
 	@echo -----------------------------------------------------------------
 	@echo ansible-playbook
 	@echo -----------------------------------------------------------------
-	@cd -- ansible && \
+	@cd -- ansible/managed/ && \
 		ansible-playbook --limit '$(call escape,$(LIMIT))' playbook.yml
 
 .PHONY: config
@@ -60,7 +60,7 @@ reboot:
 	@echo -----------------------------------------------------------------
 	@echo Rebooting hosts
 	@echo -----------------------------------------------------------------
-	@cd -- ansible && \
+	@cd -- ansible/managed/ && \
 		ansible --become --limit '$(call escape,$(LIMIT))' -m reboot all
 
 tf_show_id := terraform output -raw id
