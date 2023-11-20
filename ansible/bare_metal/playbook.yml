@@ -1,0 +1,14 @@
+- name: General maintenance
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.etckeeper
+    - tensin.infra.pacman
+    - yay
+    - tensin.infra.docker
+
+- name: Vagrant
+  hosts: vagrant
+  gather_facts: false
+  roles:
+    - tensin.infra.vagrant

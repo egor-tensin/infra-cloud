@@ -2,12 +2,6 @@ web	ansible_host=egort.name
 vpn	ansible_host=vpn.egort.name
 vpn-ru	ansible_host=vpn-ru.egort.name
 
-[debian12]
-web
-vpn
-[debian11]
-vpn-ru
-
 [linux_status_public]
 web
 
