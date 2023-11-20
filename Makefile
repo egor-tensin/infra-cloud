@@ -39,11 +39,19 @@ plan: plan/vpn-ru/project plan/vpn-ru/server
 plan: plan/vpn/project plan/vpn/data plan/vpn/server
 plan: plan/web/project plan/web/data plan/web/server
 
+.PHONY: deps
+deps:
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo Installing Ansible dependencies
+	@echo -----------------------------------------------------------------
+	@ansible-galaxy install -r ansible/requirements.yml
+
 LIMIT ?= all
 $(eval $(call noexpand,LIMIT))
 
 .PHONY: configure
-configure:
+configure: deps
 	@echo
 	@echo -----------------------------------------------------------------
 	@echo ansible-playbook
