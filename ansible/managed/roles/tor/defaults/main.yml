@@ -8,3 +8,4 @@ tor_port_dir: 9030
 tor_data_dir: /var/lib/tor
 
 #tor_nickname:
+#tor_email:

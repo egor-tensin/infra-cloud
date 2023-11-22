@@ -33,6 +33,7 @@ digitalocean_volume_dir: /mnt/data
 digitalocean_volume_dependent_services: [tor@default]
 
 tor_nickname: justiceforall
+tor_email: calm.tent0890@fastmail.com
 tor_data_dir: '{{ digitalocean_volume_dir }}/tor'
 
 my_workspace_projects:
