@@ -26,7 +26,7 @@ wg_peers:
   - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
     preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
     allowed_ips: '{{ wg_addr4 }}, {{ wg_addr6 }}'
-    endpoint: vpn.egort.name:443
+    endpoint: vpn.tensin.name:443
     persistent_keepalive: true
   # tensin-laptop2
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=

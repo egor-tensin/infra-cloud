@@ -10,24 +10,24 @@ locals {
     },
   ]
 
-  cname_records = [
+  dkim_records = [
     {
       host  = "fm1._domainkey"
-      value = "fm1.egort.name.dkim.fmhosted.com."
+      value = "fm1.${local.domain_new}.dkim.fmhosted.com."
     },
     {
       host  = "fm2._domainkey"
-      value = "fm2.egort.name.dkim.fmhosted.com."
+      value = "fm2.${local.domain_new}.dkim.fmhosted.com."
     },
     {
       host  = "fm3._domainkey"
-      value = "fm3.egort.name.dkim.fmhosted.com."
+      value = "fm3.${local.domain_new}.dkim.fmhosted.com."
     },
   ]
 }
 
 resource "digitalocean_record" "fastmail_mx" {
-  domain   = module.domain.domain_id
+  domain   = module.domain_new.domain_id
   type     = "MX"
   name     = "@"
   value    = each.key
@@ -39,20 +39,20 @@ resource "digitalocean_record" "fastmail_mx" {
   }
 }
 
-resource "digitalocean_record" "fastmail_cname" {
-  domain = module.domain.domain_id
+resource "digitalocean_record" "fastmail_dkim" {
+  domain = module.domain_new.domain_id
   type   = "CNAME"
   name   = each.key
   value  = each.value
 
   for_each = {
-    for record in local.cname_records :
+    for record in local.dkim_records :
     record.host => record.value
   }
 }
 
-resource "digitalocean_record" "fastmail_txt" {
-  domain = module.domain.domain_id
+resource "digitalocean_record" "fastmail_spf" {
+  domain = module.domain_new.domain_id
   type   = "TXT"
   name   = "@"
   value  = "v=spf1 include:spf.messagingengine.com ?all"

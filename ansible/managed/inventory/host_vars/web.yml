@@ -13,15 +13,20 @@ digitalocean_volume_name: web-data
 digitalocean_volume_dir: /mnt/data
 digitalocean_volume_dependent_services: [docker]
 
+domain_old: egort.name
+domain_new: tensin.name
+subdomains:
+  - dev
+  - git
+  - id
+  - shadow
+  - stash
+subdomains_old: "{{ (subdomains | product([domain_old]) | map('join', '.')) + [domain_old] }}"
+subdomains_new: "{{ (subdomains | product([domain_new]) | map('join', '.')) + [domain_new] }}"
+
 letsencrypt_domains:
-  - name: egort.name
-    domains:
-      - egort.name
-      - dev.egort.name
-      - git.egort.name
-      - id.egort.name
-      - shadow.egort.name
-      - stash.egort.name
+  - name: "{{ domain_new }}"
+    domains: "{{ subdomains_old + subdomains_new }}"
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
@@ -35,5 +40,5 @@ wg_peers:
   - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
     preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
     allowed_ips: '{{ wg_prefix4 }}.0/24, {{ wg_prefix6 }}.0/48'
-    endpoint: vpn.egort.name:443
+    endpoint: vpn.tensin.name:443
     persistent_keepalive: true

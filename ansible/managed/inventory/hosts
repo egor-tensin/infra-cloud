@@ -1,6 +1,6 @@
-web	ansible_host=egort.name
-vpn	ansible_host=vpn.egort.name
-vpn-ru	ansible_host=vpn-ru.egort.name
+web	ansible_host=tensin.name
+vpn	ansible_host=vpn.tensin.name
+vpn-ru	ansible_host=vpn-ru.tensin.name
 
 [linux_status_public]
 web
