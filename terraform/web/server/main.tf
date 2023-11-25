@@ -6,13 +6,8 @@ data "digitalocean_ssh_keys" "this" {
 }
 
 locals {
-  user = "maintenance"
-
-  ssh_port   = "993"
-  gitea_port = "22"
-  web_ports  = ["80", "443"]
-
-  open_ports = concat([local.gitea_port, local.ssh_port], local.web_ports)
+  user     = "maintenance"
+  ssh_port = "993"
 }
 
 module "server" {
