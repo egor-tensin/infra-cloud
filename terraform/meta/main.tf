@@ -3,6 +3,13 @@ resource "digitalocean_project" "this" {
   description = var.description
 }
 
+data "digitalocean_ssh_keys" "this" {
+  sort {
+    key       = "fingerprint"
+    direction = "asc"
+  }
+}
+
 resource "digitalocean_vpc" "this" {
   name   = "${var.stub}-vpc"
   region = var.region

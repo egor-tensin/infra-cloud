@@ -15,6 +15,9 @@ output "project_stub" {
 output "user" {
   value = var.user
 }
+output "ssh_keys" {
+  value = data.digitalocean_ssh_keys.this.ssh_keys.*.public_key
+}
 output "ssh_port" {
   value = var.ssh_port
 }
