@@ -68,6 +68,10 @@ Terraform
 
       make init
 
+* Upgrade providers:
+
+      make upgrade
+
 Usage
 =====
 
