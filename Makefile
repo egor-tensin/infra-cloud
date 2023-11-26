@@ -50,17 +50,26 @@ deps:
 LIMIT ?= all
 $(eval $(call noexpand,LIMIT))
 
+ansible_dir := ansible/managed
+
 .PHONY: configure
 configure: deps
 	@echo
 	@echo -----------------------------------------------------------------
 	@echo ansible-playbook
 	@echo -----------------------------------------------------------------
-	@cd -- ansible/managed/ && \
+	@cd -- '$(call escape,$(ansible_dir))' && \
 		ansible-playbook --limit '$(call escape,$(LIMIT))' playbook.yml
 
 .PHONY: config
 config: configure
+
+.PHONY: configure/bare_metal
+configure/bare_metal: ansible_dir := ansible/bare_metal
+configure/bare_metal: configure
+
+.PHONY: config/bare_metal
+config/bare_metal: configure/bare_metal
 
 .PHONY: reboot
 reboot:
