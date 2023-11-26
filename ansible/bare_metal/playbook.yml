@@ -6,6 +6,7 @@
     - tensin.infra.pacman
     - yay
     - tensin.infra.docker
+    - tensin.infra.my_dotfiles
 
 - name: Vagrant
   hosts: vagrant
