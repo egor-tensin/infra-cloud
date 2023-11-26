@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    key = "state/terraform.tfstate"
+    key = "state.tfstate"
   }
 }
 

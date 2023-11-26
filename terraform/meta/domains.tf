@@ -8,7 +8,7 @@ module "domain_old" {
   source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.0.0"
 
   name       = local.domain_old
-  ip_address = digitalocean_floating_ip.server.ip_address
+  ip_address = digitalocean_floating_ip.web.ip_address
   project_id = digitalocean_project.this.id
 
   aliases = local.subdomains
@@ -18,7 +18,7 @@ module "domain_new" {
   source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.0.0"
 
   name       = local.domain_new
-  ip_address = digitalocean_floating_ip.server.ip_address
+  ip_address = digitalocean_floating_ip.web.ip_address
   project_id = digitalocean_project.this.id
 
   aliases = local.subdomains
@@ -28,14 +28,14 @@ resource "digitalocean_record" "vpn_new" {
   domain = module.domain_new.domain_id
   type   = "A"
   name   = "vpn"
-  value  = data.terraform_remote_state.vpn.outputs.server_ip
+  value  = digitalocean_floating_ip.vpn.ip_address
 }
 
 resource "digitalocean_record" "vpn_ru_new" {
   domain = module.domain_new.domain_id
   type   = "A"
   name   = "vpn-ru"
-  value  = data.terraform_remote_state.vpn_ru.outputs.server_ip
+  value  = local.vpn_ru_ip
 }
 
 # These aliases have to be maintained because I have a bunch of devices set up

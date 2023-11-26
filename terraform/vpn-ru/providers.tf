@@ -9,7 +9,7 @@ terraform {
     }
   }
   backend "s3" {
-    key = "vpn-ru/server/terraform.tfstate"
+    key = "vpn-ru.tfstate"
   }
 }
 
@@ -21,12 +21,12 @@ provider "yandex" {
   folder_id = "b1gv5jkqodfl3b96urfl"
 }
 
-data "terraform_remote_state" "project" {
+data "terraform_remote_state" "meta" {
   backend = "s3"
 
   config = {
     region = "eu-central-1"
     bucket = "tensin-terraform-state"
-    key    = "vpn-ru/project/terraform.tfstate"
+    key    = "meta.tfstate"
   }
 }

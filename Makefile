@@ -17,9 +17,8 @@ init/%: DO
 
 .PHONY: init
 init: init/state
-init: init/vpn-ru/project init/vpn-ru/server
-init: init/vpn/project init/vpn/data init/vpn/server
-init: init/web/project init/web/data init/web/server
+init: init/meta init/data
+init: init/vpn-ru init/vpn init/web
 
 .PHONY: upgrade
 upgrade: tf_init_args := -upgrade
@@ -35,9 +34,8 @@ plan/%: DO
 
 .PHONY: plan
 plan: plan/state
-plan: plan/vpn-ru/project plan/vpn-ru/server
-plan: plan/vpn/project plan/vpn/data plan/vpn/server
-plan: plan/web/project plan/web/data plan/web/server
+plan: plan/meta plan/data
+plan: plan/vpn-ru plan/vpn plan/web
 
 .PHONY: deps
 deps:
@@ -93,19 +91,19 @@ yc_start := $(yc) compute instance start --id
 yc_stop  := $(yc) compute instance stop  --id
 
 digitalocean/%/start: DO
-	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*)' && $(tf_show_id) )" && \
 		$(do_start) "$$id"
 
 digitalocean/%/stop: DO
-	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*)' && $(tf_show_id) )" && \
 		$(do_stop) "$$id"
 
 yandex_cloud/%/start: DO
-	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*)' && $(tf_show_id) )" && \
 		$(yc_start) "$$id"
 
 yandex_cloud/%/stop: DO
-	@id="$$( cd -- '$(call escape,terraform/$*/server)' && $(tf_show_id) )" && \
+	@id="$$( cd -- '$(call escape,terraform/$*)' && $(tf_show_id) )" && \
 		$(yc_stop) "$$id"
 
 vpn/%: digitalocean/vpn/% ;

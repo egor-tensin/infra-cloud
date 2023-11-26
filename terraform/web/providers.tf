@@ -6,20 +6,20 @@ terraform {
     }
   }
   backend "s3" {
-    key = "vpn/server/terraform.tfstate"
+    key = "web.tfstate"
   }
 }
 
 provider "digitalocean" {
 }
 
-data "terraform_remote_state" "project" {
+data "terraform_remote_state" "meta" {
   backend = "s3"
 
   config = {
     region = "eu-central-1"
     bucket = "tensin-terraform-state"
-    key    = "vpn/project/terraform.tfstate"
+    key    = "meta.tfstate"
   }
 }
 
@@ -29,6 +29,6 @@ data "terraform_remote_state" "data" {
   config = {
     region = "eu-central-1"
     bucket = "tensin-terraform-state"
-    key    = "vpn/data/terraform.tfstate"
+    key    = "data.tfstate"
   }
 }
