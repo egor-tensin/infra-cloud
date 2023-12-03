@@ -2,18 +2,18 @@ resource "digitalocean_floating_ip" "vpn" {
   region = var.region
 }
 
-resource "digitalocean_project_resources" "vpn_ip" {
-  project   = digitalocean_project.this.id
-  resources = [digitalocean_floating_ip.vpn.urn]
-}
-
 resource "digitalocean_floating_ip" "web" {
   region = var.region
 }
 
-resource "digitalocean_project_resources" "web_ip" {
+resource "digitalocean_project_resources" "project_ip" {
   project   = digitalocean_project.this.id
-  resources = [digitalocean_floating_ip.web.urn]
+  resources = [each.value]
+
+  for_each = toset([
+    digitalocean_floating_ip.vpn.urn,
+    digitalocean_floating_ip.web.urn,
+  ])
 }
 
 resource "yandex_vpc_address" "vpn_ru" {
@@ -25,5 +25,7 @@ resource "yandex_vpc_address" "vpn_ru" {
 }
 
 locals {
-  vpn_ru_ip = yandex_vpc_address.vpn_ru.external_ipv4_address[0].address
+  ip_web    = digitalocean_floating_ip.web.ip_address
+  ip_vpn    = digitalocean_floating_ip.vpn.ip_address
+  ip_vpn_ru = yandex_vpc_address.vpn_ru.external_ipv4_address[0].address
 }

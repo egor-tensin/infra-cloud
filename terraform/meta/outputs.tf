@@ -30,11 +30,11 @@ output "subnet_id_ru" {
 }
 
 output "server_ip_vpn" {
-  value = digitalocean_floating_ip.vpn.ip_address
+  value = local.ip_vpn
 }
 output "server_ip_web" {
-  value = digitalocean_floating_ip.web.ip_address
+  value = local.ip_web
 }
 output "server_ip_vpn_ru" {
-  value = local.vpn_ru_ip
+  value = local.ip_vpn_ru
 }
