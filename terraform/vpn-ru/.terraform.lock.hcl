@@ -6,6 +6,7 @@ provider "registry.terraform.io/digitalocean/digitalocean" {
   constraints = "~> 2.0"
   hashes = [
     "h1:XbMiS8CDYrN98p11d6sgiMeFutKpglkKagCoEYa+zJY=",
+    "h1:bV9Mt4LZJruFUPQqSKCKGBcFuyUxf+hDwFv3rI+8ajI=",
     "zh:0a6fa16ae132abc013cf08d9855836f36fb4067a4ab1cba557afc71d1c688820",
     "zh:1cd446885a16b5bf05468e250a9f005285845c8008872525188aff71a4f92678",
     "zh:22fa51d8888750f5202cbe06fffb8d6874b502d98c8ad93aea46664ae114495b",
@@ -28,6 +29,7 @@ provider "registry.terraform.io/digitalocean/digitalocean" {
 provider "registry.terraform.io/yandex-cloud/yandex" {
   version = "0.103.0"
   hashes = [
+    "h1:92E43FjnPQQlhNj6liVDSFIruiNkE476EpKTlzUzSjo=",
     "h1:eSYUkzmPVWah6u7khjG9RSWtCz0RGyL7ouLpxmzlKQ4=",
     "zh:01eed9047ba9eb0998811f5e1c0331ba10bb428d2085df52f05d71dc3b061edc",
     "zh:0492fb9613d6044996e26b44a3956db49e67ec33ee8788b09df2a79d46950da7",
