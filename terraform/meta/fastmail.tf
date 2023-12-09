@@ -9,21 +9,6 @@ locals {
       value    = "in2-smtp.messagingengine.com."
     },
   ]
-
-  dkim_records = [
-    {
-      host  = "fm1._domainkey"
-      value = "fm1.${local.domain_new}.dkim.fmhosted.com."
-    },
-    {
-      host  = "fm2._domainkey"
-      value = "fm2.${local.domain_new}.dkim.fmhosted.com."
-    },
-    {
-      host  = "fm3._domainkey"
-      value = "fm3.${local.domain_new}.dkim.fmhosted.com."
-    },
-  ]
 }
 
 resource "digitalocean_record" "fastmail_mx" {
@@ -42,13 +27,10 @@ resource "digitalocean_record" "fastmail_mx" {
 resource "digitalocean_record" "fastmail_dkim" {
   domain = module.domain_new.domain_id
   type   = "CNAME"
-  name   = each.key
-  value  = each.value
+  name   = "fm${each.value}._domainkey"
+  value  = "fm${each.value}.${local.domain_new}.dkim.fmhosted.com."
 
-  for_each = {
-    for record in local.dkim_records :
-    record.host => record.value
-  }
+  for_each = toset(["1", "2", "3"])
 }
 
 resource "digitalocean_record" "fastmail_spf" {
