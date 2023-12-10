@@ -1,0 +1,5 @@
+name: Egor Tensin
+email: egor@tensin.name
+
+etckeeper_git_name: '{{ name }}'
+etckeeper_git_email: '{{ email }}'

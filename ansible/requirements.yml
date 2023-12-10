@@ -1,6 +1,6 @@
 collections:
   - source: https://github.com/egor-tensin/infra-ansible.git
     type: git
-    version: v1.0.0
+    version: v2.0.0
   - name: kewlfft.aur
     version: 0.11.1
