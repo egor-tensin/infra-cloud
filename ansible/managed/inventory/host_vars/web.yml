@@ -27,6 +27,8 @@ subdomains_new: "{{ (subdomains | product([domain_new]) | map('join', '.')) + [d
 letsencrypt_domains:
   - name: "{{ domain_new }}"
     domains: "{{ subdomains_old + subdomains_new }}"
+  - name: fucktipp.ing
+    domains: [fucktipp.ing]
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
