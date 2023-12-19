@@ -9,11 +9,6 @@ web
 web
 vpn
 
-[wireguard]
-web
-vpn
-vpn-ru
-
 [letsencrypt]
 web
 

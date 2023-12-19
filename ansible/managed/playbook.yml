@@ -3,18 +3,13 @@
   gather_facts: false
   roles:
     - tensin.infra.debian_cloud_server
+    - tensin.infra.wireguard
 
 - name: Attach volumes
   hosts: digitalocean_volume
   gather_facts: false
   roles:
     - tensin.infra.digitalocean_volume
-
-- name: Set up WireGuard
-  hosts: wireguard
-  gather_facts: false
-  roles:
-    - tensin.infra.wireguard
 
 - name: Set up Docker
   hosts: all

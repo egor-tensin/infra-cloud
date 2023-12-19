@@ -1,5 +1,0 @@
-wg_prefix4: '192.168.205'
-wg_prefix6: 'fd9d:bc11:4021::192.168.205'
-wg_name: vpn
-wg_listen_port: 443
-wg_dependants: []
