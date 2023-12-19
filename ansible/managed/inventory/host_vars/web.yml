@@ -19,6 +19,7 @@ subdomains:
   - dev
   - git
   - id
+  - paste
   - shadow
   - stash
 subdomains_old: "{{ (subdomains | product([domain_old]) | map('join', '.')) + [domain_old] }}"

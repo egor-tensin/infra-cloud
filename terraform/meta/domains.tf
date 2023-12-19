@@ -1,7 +1,7 @@
 locals {
   domain_old = "egort.name"
   domain_new = "tensin.name"
-  subdomains = ["dev", "git", "id", "shadow", "stash"]
+  subdomains = ["dev", "git", "id", "paste", "shadow", "stash"]
 }
 
 module "domain_old" {
