@@ -13,24 +13,14 @@ digitalocean_volume_name: web-data
 digitalocean_volume_dir: /mnt/data
 digitalocean_volume_dependent_services: [docker]
 
-domain_old: egort.name
-domain_new: tensin.name
-subdomains:
-  - dev
-  - git
-  - id
-  - paste
-  - shadow
-  - stash
-  - test
-subdomains_old: "{{ (subdomains | product([domain_old]) | map('join', '.')) + [domain_old] }}"
-subdomains_new: "{{ (subdomains | product([domain_new]) | map('join', '.')) + [domain_new] }}"
-
 letsencrypt_domains:
-  - name: "{{ domain_new }}"
-    domains: "{{ subdomains_old + subdomains_new }}"
+  - name: tensin.name
+    domains:
+      - tensin.name
+      - '*.tensin.name'
+      - egort.name
+      - '*.egort.name'
   - name: fucktipp.ing
-    domains: [fucktipp.ing]
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
