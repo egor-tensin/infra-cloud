@@ -22,6 +22,7 @@ subdomains:
   - paste
   - shadow
   - stash
+  - test
 subdomains_old: "{{ (subdomains | product([domain_old]) | map('join', '.')) + [domain_old] }}"
 subdomains_new: "{{ (subdomains | product([domain_new]) | map('join', '.')) + [domain_new] }}"
 
