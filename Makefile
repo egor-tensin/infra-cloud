@@ -69,6 +69,31 @@ configure/bare_metal: configure
 .PHONY: config/bare_metal
 config/bare_metal: configure/bare_metal
 
+.PHONY: maintenance
+maintenance:
+	@$(MAKE) upgrade
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo Checking for file modifications
+	@echo -----------------------------------------------------------------
+	@git_status="$$( git status --porcelain=v1 )" && \
+	file_statuses="$$( echo "$$git_status" | cut -c 1-2 | sort -u )" && \
+	file_names="$$( echo "$$git_status" | cut -c 4- | grep -o '[^/]*$$' | sort -u )" && \
+	if [ -z "$$git_status" ]; then \
+		true ; \
+	elif [ "$$file_statuses $$file_names" = ' M .terraform.lock.hcl' ]; then \
+		git commit -am 'terraform: upgrade providers' && \
+			git push -q ; \
+	else \
+		echo ; \
+		echo '-----------------------------------------------------------------'; \
+		echo 'Error: unrecognized modifications in the repository'; \
+		echo '-----------------------------------------------------------------'; \
+		exit 1; \
+	fi
+	@$(MAKE) plan
+	@$(MAKE) configure
+
 .PHONY: reboot
 reboot:
 	@echo
