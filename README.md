@@ -82,6 +82,10 @@ Terraform
 
       make plan
 
+* Apply the configuration to the infrastructure:
+
+      make apply
+
 Ansible
 -------
 

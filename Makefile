@@ -37,6 +37,19 @@ plan: plan/state
 plan: plan/meta plan/data
 plan: plan/vpn-ru plan/vpn plan/web
 
+apply/%: DO
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo 'terraform apply: $*'
+	@echo -----------------------------------------------------------------
+	@cd -- 'terraform/$*/' && \
+		terraform apply
+
+.PHONY: apply
+apply: apply/state
+apply: apply/meta apply/data
+apply: apply/vpn-ru apply/vpn apply/web
+
 .PHONY: deps
 deps:
 	@echo
