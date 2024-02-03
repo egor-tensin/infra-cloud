@@ -1,5 +1,5 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v1.0.0"
+  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v1.1.0"
 
   zone       = data.terraform_remote_state.meta.outputs.region_ru
   name       = "vpn-ru-server"

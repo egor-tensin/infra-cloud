@@ -1,5 +1,5 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v1.0.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v1.1.0"
 
   region     = data.terraform_remote_state.meta.outputs.region
   project_id = data.terraform_remote_state.meta.outputs.project_id
