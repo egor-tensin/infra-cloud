@@ -1,5 +1,5 @@
 module "domain_fucktipping" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.1.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.1.1"
 
   name       = "fucktipp.ing"
   ip_address = local.ip_web
