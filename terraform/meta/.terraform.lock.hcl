@@ -30,6 +30,7 @@ provider "registry.terraform.io/yandex-cloud/yandex" {
   version = "0.107.0"
   hashes = [
     "h1:a6lF/BmMBBhdU23qA6JOzS2z0qsTvcZ3lEbir68oPmI=",
+    "h1:wjMDWQR9t1mq+Zs/k9JkRkdfa92iIL1PvHX2MOncyhc=",
     "zh:0c7e9a22d8ed1d1a23d0a9a14d12f9cd4545f75d49af04f43b4adb8d02b5d4dc",
     "zh:10aa9b3dcb177edc3b5284ddd3812f0cc1b7010d8b612e856f4efbaa10aafe30",
     "zh:23d275523e5112c96a758d5bc2ad91c9ae012b028b9979044326688ca76f0d47",
