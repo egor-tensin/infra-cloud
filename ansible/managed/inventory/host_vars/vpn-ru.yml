@@ -49,4 +49,5 @@ wg_peers:
     preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
     allowed_ips: '{{ wg_prefix4 }}.16/32, {{ wg_prefix6 }}.16/128'
 
-wg_dependent_services: [danted]
+wg_dependent_services:
+  - danted

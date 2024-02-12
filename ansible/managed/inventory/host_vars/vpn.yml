@@ -30,7 +30,8 @@ firewall_ports_udp:
 
 digitalocean_volume_name: vpn-data
 digitalocean_volume_dir: /mnt/data
-digitalocean_volume_dependent_services: [tor@default]
+digitalocean_volume_dependent_services:
+  - tor@default
 
 tor_nickname: justiceforall
 tor_email: calm.tent0890@fastmail.com
@@ -87,4 +88,7 @@ wg_peers:
     preshared_key: pOl3UphYCPZBQTNui74HqQgGgvdVmnd313dnniqHqWw=
     allowed_ips: '{{ wg_prefix4 }}.17/32, {{ wg_prefix6 }}.17/128'
 
-wg_dependent_services: [danted, i2pd, tor@default]
+wg_dependent_services:
+  - danted
+  - i2pd
+  - tor@default
