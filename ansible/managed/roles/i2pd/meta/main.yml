@@ -1,6 +1,7 @@
 dependencies:
-  - role: tensin.infra.ppa
+  - role: tensin.infra.apt_repo
     vars:
-      ppa_owner: purplei2p
-      ppa_name: i2pd
-      ppa_key: A0592679C89831BBC7E5D822625964081B0340BA
+      # Lookie here: https://repo.i2pd.xyz/.help/readme.html
+      apt_repo_name: i2pd
+      apt_repo_url: https://repo.i2pd.xyz/
+      apt_repo_key_url: https://keyserver2.gnupg.org/pks/lookup?op=get&search=0x66f6c87b98ebcfe2
