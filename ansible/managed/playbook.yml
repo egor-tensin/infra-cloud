@@ -23,11 +23,17 @@
   roles:
     - tensin.infra.letsencrypt
 
-- name: Set up proxy server
+- name: Set up web proxy
   hosts: proxy
   gather_facts: false
   roles:
     - dante
+
+- name: Set up DNS proxy
+  hosts: dns_proxy
+  gather_facts: false
+  roles:
+    - dnscrypt_proxy
 
 - name: Set up i2pd
   hosts: i2pd

@@ -16,6 +16,9 @@ web
 vpn
 vpn-ru
 
+[dns_proxy]
+vpn
+
 [i2pd]
 vpn
 

@@ -1,0 +1,56 @@
+- name: Configure dnscrypt-proxy
+  become: true
+  block:
+    - name: Create /etc/dnscrypt-proxy
+      ansible.builtin.file:
+        path: /etc/dnscrypt-proxy
+        state: directory
+        owner: root
+        group: root
+        mode: '755'
+
+    - name: Create /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+      ansible.builtin.template:
+        src: dnscrypt-proxy.toml.j2
+        dest: /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+        owner: root
+        group: root
+        mode: '644'
+      notify: dnscrypt_proxy_configured
+
+    - name: Configure service capabilities
+      ansible.builtin.template:
+        src: capabilities.conf.j2
+        dest: /etc/systemd/system/dnscrypt-proxy.service.d/capabilities.conf
+        owner: root
+        group: root
+        mode: '644'
+      notify: dnscrypt_proxy_configured
+
+    - name: Start after systemd-resolved
+      ansible.builtin.template:
+        src: depend_service_systemd-resolved.conf.j2
+        dest: /etc/systemd/system/dnscrypt-proxy.service.d/depend_service_systemd-resolved.conf
+        owner: root
+        group: root
+        mode: '644'
+      notify: dnscrypt_proxy_configured
+
+- name: Update the block list
+  ansible.builtin.import_tasks: blocklist.yml
+
+- name: Restart dnscrypt-proxy service if necessary
+  ansible.builtin.meta: flush_handlers
+
+- name: Install dnscrypt-proxy
+  become: true
+  ansible.builtin.package:
+    name: dnscrypt-proxy
+    state: present
+
+- name: Enable & start dnscrypt-proxy service
+  become: true
+  ansible.builtin.systemd_service:
+    name: dnscrypt-proxy
+    enabled: true
+    state: started
