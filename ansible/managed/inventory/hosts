@@ -12,7 +12,7 @@ vpn
 [letsencrypt]
 web
 
-[proxy]
+[web_proxy]
 vpn
 vpn-ru
 

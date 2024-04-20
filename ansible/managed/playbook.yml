@@ -24,7 +24,7 @@
     - tensin.infra.letsencrypt
 
 - name: Set up web proxy
-  hosts: proxy
+  hosts: web_proxy
   gather_facts: false
   roles:
     - dante
