@@ -14,4 +14,7 @@ module "server" {
   user     = data.terraform_remote_state.meta.outputs.user
   ssh_keys = data.terraform_remote_state.meta.outputs.ssh_keys
   ssh_port = data.terraform_remote_state.meta.outputs.ssh_port
+
+  # I'm tired from these alerts, the Tor deamon bombards me with those.
+  alert_cpu_enable = false
 }
