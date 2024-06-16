@@ -1,41 +1,41 @@
 locals {
-  mx_records = [
-    {
-      priority = 10
-      value    = "in1-smtp.messagingengine.com."
-    },
-    {
-      priority = 20
-      value    = "in2-smtp.messagingengine.com."
-    },
+  # The list of domains to configure:
+  domains = [
+    module.domain_new.domain_id,
+    module.domain_cutestdoggroomer.domain_id,
   ]
 }
 
 resource "digitalocean_record" "fastmail_mx" {
-  domain   = module.domain_new.domain_id
+  domain   = each.value[0]
   type     = "MX"
   name     = "@"
-  value    = each.key
-  priority = each.value
+  value    = "in${each.value[1]}-smtp.messagingengine.com."
+  priority = each.value[1] * 10
 
   for_each = {
-    for record in local.mx_records :
-    record.value => record.priority
+    for value in setproduct(local.domains, [1, 2]) :
+    "${value[0]}-${value[1]}" => value
   }
 }
 
 resource "digitalocean_record" "fastmail_dkim" {
-  domain = module.domain_new.domain_id
+  domain = each.value[0]
   type   = "CNAME"
-  name   = "fm${each.value}._domainkey"
-  value  = "fm${each.value}.${local.domain_new}.dkim.fmhosted.com."
+  name   = "fm${each.value[1]}._domainkey"
+  value  = "fm${each.value[1]}.${each.value[0]}.dkim.fmhosted.com."
 
-  for_each = toset(["1", "2", "3"])
+  for_each = {
+    for value in setproduct(local.domains, ["1", "2", "3"]) :
+    "${value[0]}-${value[1]}" => value
+  }
 }
 
 resource "digitalocean_record" "fastmail_spf" {
-  domain = module.domain_new.domain_id
+  domain = each.value
   type   = "TXT"
   name   = "@"
   value  = "v=spf1 include:spf.messagingengine.com ?all"
+
+  for_each = toset(local.domains)
 }
