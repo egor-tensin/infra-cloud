@@ -22,6 +22,7 @@ letsencrypt_domains:
       - egort.name
       - '*.egort.name'
   - name: fucktipp.ing
+  - name: cutestdoggroomer.com
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
