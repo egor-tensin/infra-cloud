@@ -89,6 +89,7 @@ config/bare_metal: configure/bare_metal
 .PHONY: maintenance
 maintenance:
 	@$(MAKE) upgrade
+
 	@echo
 	@echo -----------------------------------------------------------------
 	@echo Checking for file modifications
@@ -108,6 +109,7 @@ maintenance:
 		echo '-----------------------------------------------------------------'; \
 		exit 1; \
 	fi
+
 	@$(MAKE) plan
 	@$(MAKE) configure
 
