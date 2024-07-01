@@ -9,7 +9,7 @@ variable "region_ru" {
 
 variable "name" {
   type    = string
-  default = "Infra"
+  default = "Personal"
 }
 variable "description" {
   type    = string
@@ -17,7 +17,7 @@ variable "description" {
 }
 variable "stub" {
   type    = string
-  default = "infra"
+  default = "personal"
 }
 
 variable "user" {
