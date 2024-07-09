@@ -13,7 +13,7 @@ locals {
 }
 
 module "domain_new" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.1.1"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.2.0"
 
   name       = local.domain_new
   ip_address = local.ip_web
@@ -42,7 +42,7 @@ resource "digitalocean_record" "vpn_ru_new" {
 # fail at DNS resolution.
 
 module "domain_old" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.1.1"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.2.0"
 
   name       = local.domain_old
   ip_address = local.ip_web
