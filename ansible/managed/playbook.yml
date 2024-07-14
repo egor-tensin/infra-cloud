@@ -29,12 +29,6 @@
   roles:
     - dante
 
-- name: Set up DNS proxy
-  hosts: dns_proxy
-  gather_facts: false
-  roles:
-    - dnscrypt_proxy
-
 - name: Set up i2pd
   hosts: i2pd
   gather_facts: false

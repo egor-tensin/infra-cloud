@@ -8,10 +8,6 @@ firewall_ports4_tcp:
   # Dante
   - port: '{{ dante_port }}'
     source: '{{ wg_addr4 }}'
-firewall_ports4_udp:
-  # dnscrypt-proxy
-  - port: '{{ dnscrypt_proxy_port }}'
-    source: '{{ wg_addr4 }}'
 firewall_ports_udp:
   # WireGuard
   - '{{ wg_listen_port }}'
@@ -55,6 +51,3 @@ wg_peers:
 
 wg_dependent_services:
   - danted
-  - dnscrypt-proxy
-
-dnscrypt_proxy_addr4: '{{ wg_prefix4 }}.253'

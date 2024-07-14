@@ -5,8 +5,6 @@ module "server" {
   project_id = data.terraform_remote_state.meta.outputs.project_id
 
   name       = "vpn-server"
-  # dnscrypt-proxy is not available on Debian 12.
-  image      = "debian-11-x64"
   vpc_id     = data.terraform_remote_state.meta.outputs.vpc_id
   ip_address = data.terraform_remote_state.meta.outputs.server_ip_vpn
   volume_ids = [data.terraform_remote_state.data.outputs.volume_id_vpn]
