@@ -11,12 +11,21 @@ tf_backend_config := $(abspath ./terraform/config.s3.tfbackend)
 
 tf_init_args :=
 
+# I have no idea why terraform wouldn't just delete old provider versions from
+# .terraform/providers/. After a few iterations, especially for AWS, that
+# folder ends up taking many GBs, so I'm just going to remove it manually. This
+# sucks, but bloating your hard drive with useless crap is worse. References:
+#
+#     * https://github.com/hashicorp/terraform/issues/28286
+#     * https://discuss.hashicorp.com/t/purging-old-provider-plugin-bloat/44283
+#
 init/%: DO
 	@echo
 	@echo -----------------------------------------------------------------
 	@echo 'terraform init: $*'
 	@echo -----------------------------------------------------------------
 	@cd -- 'terraform/$*/' && \
+		rm -rf -- ./.terraform/providers && \
 		terraform init $(tf_init_args) '-backend-config=$(call escape,$(tf_backend_config))'
 
 .PHONY: init
