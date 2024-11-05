@@ -74,26 +74,17 @@ deps:
 LIMIT ?= all
 $(eval $(call noexpand,LIMIT))
 
-ansible_dir := ansible/managed
-
 .PHONY: configure
 configure: deps
 	@echo
 	@echo -----------------------------------------------------------------
 	@echo ansible-playbook
 	@echo -----------------------------------------------------------------
-	@cd -- '$(call escape,$(ansible_dir))' && \
+	@cd -- ansible/ && \
 		ansible-playbook --limit '$(call escape,$(LIMIT))' playbook.yml
 
 .PHONY: config
 config: configure
-
-.PHONY: configure/bare_metal
-configure/bare_metal: ansible_dir := ansible/bare_metal
-configure/bare_metal: configure
-
-.PHONY: config/bare_metal
-config/bare_metal: configure/bare_metal
 
 .PHONY: maintenance
 maintenance:
@@ -128,7 +119,7 @@ reboot:
 	@echo -----------------------------------------------------------------
 	@echo Rebooting hosts
 	@echo -----------------------------------------------------------------
-	@cd -- ansible/managed/ && \
+	@cd -- ansible/ && \
 		ansible --become --limit '$(call escape,$(LIMIT))' -m reboot all
 
 tf_show_id := terraform output -raw id

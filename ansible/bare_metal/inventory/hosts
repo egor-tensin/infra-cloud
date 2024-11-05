@@ -1,9 +1,0 @@
-laptop2	ansible_host=192.168.205.2
-pi2	ansible_host=192.168.205.4
-
-[vagrant]
-laptop2
-
-[all:vars]
-ansible_user=egor
-ansible_port=22

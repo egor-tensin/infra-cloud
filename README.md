@@ -100,8 +100,3 @@ Ansible
 * Reboot a host:
 
       make reboot LIMIT=HOST
-
-* By default, the `config` targets run for managed hosts in the cloud only.
-Run Ansible for bare-metal hosts:
-
-      make config/bare_metal
