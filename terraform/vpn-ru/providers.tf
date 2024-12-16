@@ -1,9 +1,5 @@
 terraform {
   required_providers {
-    digitalocean = {
-      source  = "digitalocean/digitalocean"
-      version = "~> 2.0"
-    }
     yandex = {
       source = "yandex-cloud/yandex"
     }
@@ -11,9 +7,6 @@ terraform {
   backend "s3" {
     key = "vpn-ru.tfstate"
   }
-}
-
-provider "digitalocean" {
 }
 
 provider "yandex" {
