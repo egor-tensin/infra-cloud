@@ -1,26 +1,23 @@
-web	ansible_host=tensin.name
 vpn	ansible_host=vpn.tensin.name
 vpn-ru	ansible_host=vpn-ru.tensin.name
+web	ansible_host=tensin.name
 
-[linux_status_public]
+[digitalocean]
+vpn
 web
 
-[digitalocean_volume]
-web
+[i2pd]
 vpn
 
 [letsencrypt]
 web
 
+[tor]
+vpn
+
 [web_proxy]
 vpn
 vpn-ru
-
-[i2pd]
-vpn
-
-[tor]
-vpn
 
 [all:vars]
 ansible_user=maintenance

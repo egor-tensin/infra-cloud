@@ -24,6 +24,8 @@ letsencrypt_domains:
   - name: fucktipp.ing
   - name: cutestdoggroomer.com
 
+linux_status_enable_power_management: false
+
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
     name: server

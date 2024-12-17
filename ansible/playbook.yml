@@ -6,7 +6,7 @@
     - tensin.infra.wireguard
 
 - name: Attach volumes
-  hosts: digitalocean_volume
+  hosts: digitalocean
   gather_facts: false
   roles:
     - tensin.infra.digitalocean_volume
