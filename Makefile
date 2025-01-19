@@ -31,7 +31,9 @@ init/%: DO
 .PHONY: init
 init: init/state
 init: init/meta init/data
-init: init/vpn-ru init/vpn init/web
+init: init/vpn-ru
+init: init/vpn
+init: init/web
 
 .PHONY: upgrade
 upgrade: tf_init_args := -upgrade
@@ -48,7 +50,9 @@ plan/%: DO
 .PHONY: plan
 plan: plan/state
 plan: plan/meta plan/data
-plan: plan/vpn-ru plan/vpn plan/web
+plan: plan/vpn-ru
+plan: plan/vpn
+plan: plan/web
 
 apply/%: DO
 	@echo
@@ -61,7 +65,9 @@ apply/%: DO
 .PHONY: apply
 apply: apply/state
 apply: apply/meta apply/data
-apply: apply/vpn-ru apply/vpn apply/web
+apply: apply/vpn-ru
+apply: apply/vpn
+apply: apply/web
 
 .PHONY: deps
 deps:
