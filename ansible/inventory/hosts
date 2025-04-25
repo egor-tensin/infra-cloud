@@ -1,5 +1,5 @@
 vpn	ansible_host=vpn.tensin.name
-#vpn-ru	ansible_host=vpn-ru.tensin.name
+vpn-ru	ansible_host=vpn-ru.tensin.name
 web	ansible_host=tensin.name
 
 [digitalocean]
@@ -17,7 +17,7 @@ vpn
 
 [web_proxy]
 vpn
-#vpn-ru
+vpn-ru
 
 [all:vars]
 ansible_user=maintenance
