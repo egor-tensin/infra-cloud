@@ -1,5 +1,5 @@
-name: Egor Tensin
-email: egor@tensin.name
+my_name: Egor Tensin
+my_email: egor@tensin.name
 
 docker_logging_driver: local
 
@@ -8,5 +8,5 @@ wg_prefix6: 'fd9d:bc11:4021::192.168.205'
 wg_name: vpn
 wg_listen_port: 443
 
-my_workspace_git_name: '{{ name }}'
-my_workspace_git_email: '{{ email }}'
+my_workspace_git_name: '{{ my_name }}'
+my_workspace_git_email: '{{ my_email }}'
