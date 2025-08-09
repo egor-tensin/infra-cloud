@@ -46,7 +46,11 @@
   ansible.builtin.package:
     name:
       - tor
-      - deb.torproject.org-keyring
+      # Don't install the keyring package; it seems to be identical to just
+      # wget'ing the key, and clashes with my tensin.infra.apt_repo role.
+      # TODO: either expand the apt_repo role or don't use it to be more in
+      # line with the official installation instructions.
+      #- deb.torproject.org-keyring
     state: present
 
 - name: Fix permissions on data directory
