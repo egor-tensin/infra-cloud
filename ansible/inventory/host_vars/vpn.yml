@@ -87,10 +87,6 @@ wg_peers:
   - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
     preshared_key: pOl3UphYCPZBQTNui74HqQgGgvdVmnd313dnniqHqWw=
     allowed_ips: '{{ wg_prefix4 }}.17/32, {{ wg_prefix6 }}.17/128'
-  # Svetlana Meluzova
-  - public_key: NO8+VIF06UgKusVkAZbpGSp+bwVQprbQBkYA4+d8ayA=
-    preshared_key: tgAlbvF6eAQRPy4GucVF1LsB0aFodr99U3ZcgCn3vVs=
-    allowed_ips: '{{ wg_prefix4 }}.18/32, {{ wg_prefix6 }}.18/128'
   # tensin-pc2
   - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
     preshared_key: CGVI3hK1q2qWv2NBSumq2/Z4Vvh/ksiwBLhbdKGt8RI=
