@@ -48,6 +48,10 @@ wg_peers:
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
     preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
     allowed_ips: '{{ wg_prefix4 }}.16/32, {{ wg_prefix6 }}.16/128'
+  # tensin-pc2
+  - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
+    preshared_key: CL9xiWX3CtFaCPESpmCQblLubv8ZXjfNAW5O0H4M30w=
+    allowed_ips: '{{ wg_prefix4 }}.19/32, {{ wg_prefix6 }}.19/128'
 
 wg_dependent_services:
   - danted
