@@ -29,6 +29,10 @@ linux_status_enable_power_management: false
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-web.git'
     name: server
+# Those are needed to run the web server check.py script:
+my_workspace_dependencies:
+  - python3-pytest
+  - python3-requests
 
 wg_private_key: WBO8t16PPpVnKa4EXpFCHT8vwJuPt5qmpYGLMfvjsG8=
 wg_addr4: '{{ wg_prefix4 }}.8/24'
