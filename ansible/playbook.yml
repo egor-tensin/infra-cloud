@@ -45,5 +45,5 @@
   hosts: all
   gather_facts: false
   roles:
-    - tensin.infra.my_workspace
     - tensin.infra.my_dotfiles
+    - tensin.infra.my_workspace
