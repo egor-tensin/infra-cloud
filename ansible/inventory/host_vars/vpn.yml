@@ -92,7 +92,7 @@ wg_peers:
     preshared_key: CGVI3hK1q2qWv2NBSumq2/Z4Vvh/ksiwBLhbdKGt8RI=
     allowed_ips: '{{ wg_prefix4 }}.19/32, {{ wg_prefix6 }}.19/128'
   # tensin-laptop3
-  - public_key: rd1maTm2WCfkWp9YpwTp4nlGhKAZfydqhBT6axeqDB4=
+  - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
     preshared_key: rzr4K1HA7gE5ai0A7hu0k+voGMCyehqWtzNi6YG6hvo=
     allowed_ips: '{{ wg_prefix4 }}.21/32, {{ wg_prefix6 }}.21/128'
 
