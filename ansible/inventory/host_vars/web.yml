@@ -23,6 +23,7 @@ letsencrypt_domains:
       - '*.egort.name'
   - name: fucktipp.ing
   - name: cutestdoggroomer.com
+  - name: russiaissuper.gay
 
 linux_status_enable_power_management: false
 
