@@ -44,57 +44,57 @@ my_workspace_projects:
 wg_private_key: AL2RI6nHtcT6ErWJi1BgzxWQf38KcTmfyr1nBapFAGY=
 wg_addr4: '{{ wg_prefix4 }}.254/24'
 wg_addr6: '{{ wg_prefix6 }}.254/48'
-wg_router: true
+wg_server: true
 
 wg_peers:
   # tensin-vpn-ru
   - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
     preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
-    allowed_ips: '{{ wg_prefix4 }}.253/32, {{ wg_prefix6 }}.253/128'
+    allowed_ips: ['{{ wg_prefix4 }}.253/32', '{{ wg_prefix6 }}.253/128']
   # tensin-laptop2
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
     preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
-    allowed_ips: '{{ wg_prefix4 }}.2/32, {{ wg_prefix6 }}.2/128'
+    allowed_ips: ['{{ wg_prefix4 }}.2/32', '{{ wg_prefix6 }}.2/128']
   # tensin-raspi2
   - public_key: UWqQrP6yvW/5FCSgbUqGfljNLzJRzQM00w/NP5VVYm4=
     preshared_key: f/gBtPEZJtw1BDM+dmXAGLNE0lpsYl083a5Z+skVkKk=
-    allowed_ips: '{{ wg_prefix4 }}.4/32, {{ wg_prefix6 }}.4/128'
+    allowed_ips: ['{{ wg_prefix4 }}.4/32', '{{ wg_prefix6 }}.4/128']
   # tensin-web
   - public_key: 2qjay8ABLTrE8maY7ulQM186XdK71uKdiI+3rf3wA1E=
     preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
-    allowed_ips: '{{ wg_prefix4 }}.8/32, {{ wg_prefix6 }}.8/128'
+    allowed_ips: ['{{ wg_prefix4 }}.8/32', '{{ wg_prefix6 }}.8/128']
   # GitHub
   - public_key: YDI1OzWMy1u7Cw3JjSLSGwKgqglPEw/KTAszEsBSOgQ=
     preshared_key: cRksPxECPvmnR6Eu4D4yNuE3swTiP05S2yMxQrFxHwc=
-    allowed_ips: '{{ wg_prefix4 }}.9/32, {{ wg_prefix6 }}.9/128'
+    allowed_ips: ['{{ wg_prefix4 }}.9/32', '{{ wg_prefix6 }}.9/128']
   # daria-phone
   - public_key: nE628227u2v0cUISn81aMtsKnrSkO/tqBE7bClyYU3Y=
     preshared_key: 6vrXlhQv68jNT+Otu9v+7vt1eKg52J8oGHxA0EoWtp0=
-    allowed_ips: '{{ wg_prefix4 }}.12/32, {{ wg_prefix6 }}.12/128'
+    allowed_ips: ['{{ wg_prefix4 }}.12/32', '{{ wg_prefix6 }}.12/128']
   # daria-ipad
   - public_key: RJjN5vSiBFUTzZrKSR+27FBGvSn41CmGBMgQShiOGAc=
     preshared_key: Bu69rGZPpbuh0xlwYsCXwYICG3YVO9jWKZw8Vytt8jE=
-    allowed_ips: '{{ wg_prefix4 }}.14/32, {{ wg_prefix6 }}.14/128'
+    allowed_ips: ['{{ wg_prefix4 }}.14/32', '{{ wg_prefix6 }}.14/128']
   # daria-laptop2
   - public_key: RMGaFRWhmFCv75/rA8kMMqhPpWbgLAyeaQ0LV6gxRg0=
     preshared_key: U0VyJhCVtXYaCla1n0GAjGVSbCdOuLggun0I1rFCVLY=
-    allowed_ips: '{{ wg_prefix4 }}.15/32, {{ wg_prefix6 }}.15/128'
+    allowed_ips: ['{{ wg_prefix4 }}.15/32', '{{ wg_prefix6 }}.15/128']
   # tensin-phone3
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
     preshared_key: iRdYcUGMXoZDj2xgXa81qSyx34P3Pt+UXNJtMCeuDQM=
-    allowed_ips: '{{ wg_prefix4 }}.16/32, {{ wg_prefix6 }}.16/128'
+    allowed_ips: ['{{ wg_prefix4 }}.16/32', '{{ wg_prefix6 }}.16/128']
   # amazon-laptop
   - public_key: oJo0r1lK0rQvhmFEb47S8ZzIaifcfKDzUbeoh/eiWCY=
     preshared_key: pOl3UphYCPZBQTNui74HqQgGgvdVmnd313dnniqHqWw=
-    allowed_ips: '{{ wg_prefix4 }}.17/32, {{ wg_prefix6 }}.17/128'
+    allowed_ips: ['{{ wg_prefix4 }}.17/32', '{{ wg_prefix6 }}.17/128']
   # tensin-pc2
   - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
     preshared_key: CGVI3hK1q2qWv2NBSumq2/Z4Vvh/ksiwBLhbdKGt8RI=
-    allowed_ips: '{{ wg_prefix4 }}.19/32, {{ wg_prefix6 }}.19/128'
+    allowed_ips: ['{{ wg_prefix4 }}.19/32', '{{ wg_prefix6 }}.19/128']
   # tensin-laptop3
   - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
     preshared_key: rzr4K1HA7gE5ai0A7hu0k+voGMCyehqWtzNi6YG6hvo=
-    allowed_ips: '{{ wg_prefix4 }}.21/32, {{ wg_prefix6 }}.21/128'
+    allowed_ips: ['{{ wg_prefix4 }}.21/32', '{{ wg_prefix6 }}.21/128']
 
 wg_dependent_services:
   - danted
