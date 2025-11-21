@@ -69,6 +69,19 @@ apply: apply/vpn-ru
 apply: apply/vpn
 apply: apply/web
 
+destroy-servers/%: DO
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo 'terraform destroy: $*'
+	@echo -----------------------------------------------------------------
+	@cd -- 'terraform/$*/' && \
+		terraform destroy
+
+.PHONY: destroy-servers
+destroy-servers: destroy-servers/web
+destroy-servers: destroy-servers/vpn
+destroy-servers: destroy-servers/vpn-ru
+
 .PHONY: deps
 deps:
 	@echo
