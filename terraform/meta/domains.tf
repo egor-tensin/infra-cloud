@@ -7,7 +7,6 @@ locals {
     "id",
     "paste",
     "shadow",
-    "stash",
     "test",
   ]
 }
