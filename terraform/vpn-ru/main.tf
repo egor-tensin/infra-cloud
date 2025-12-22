@@ -1,6 +1,9 @@
 module "server" {
   source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v1.2.0-fixme"
 
+  # See infra-terraform for details.
+  #image = ""
+
   zone       = data.terraform_remote_state.meta.outputs.region_ru
   name       = "vpn-ru-server"
   subnet_id  = data.terraform_remote_state.meta.outputs.subnet_id_ru

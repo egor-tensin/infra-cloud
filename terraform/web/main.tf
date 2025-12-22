@@ -1,6 +1,10 @@
 module "server" {
   source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v1.2.0-fixme"
 
+  # See infra-terraform for details.
+  #image = ""
+  #size  = ""
+
   region     = data.terraform_remote_state.meta.outputs.region
   project_id = data.terraform_remote_state.meta.outputs.project_id
 
