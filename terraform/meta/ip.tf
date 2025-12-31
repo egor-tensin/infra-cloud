@@ -6,16 +6,15 @@ resource "digitalocean_floating_ip" "web" {
   region = var.region
 }
 
-# TODO: https://github.com/digitalocean/terraform-provider-digitalocean/issues/1455
-#resource "digitalocean_project_resources" "project_ip" {
-#  project   = digitalocean_project.this.id
-#  resources = [each.value]
-#
-#  for_each = toset([
-#    digitalocean_floating_ip.vpn.urn,
-#    digitalocean_floating_ip.web.urn,
-#  ])
-#}
+resource "digitalocean_project_resources" "project_ip" {
+  project   = digitalocean_project.this.id
+  resources = [each.value]
+
+  for_each = toset([
+    digitalocean_floating_ip.vpn.urn,
+    digitalocean_floating_ip.web.urn,
+  ])
+}
 
 resource "yandex_vpc_address" "vpn_ru" {
   name = "vpn-ru-address"
