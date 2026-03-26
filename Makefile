@@ -1,5 +1,8 @@
 include prelude.mk
 
+.PHONY: all
+all: maintenance
+
 ifndef DIGITALOCEAN_TOKEN
 $(error Please execute `source setenv.sh` first)
 endif
