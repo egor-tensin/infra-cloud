@@ -108,6 +108,14 @@ configure: deps
 .PHONY: config
 config: configure
 
+.PHONY: check-ports
+check-ports:
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo Checking open ports
+	@echo -----------------------------------------------------------------
+	@sudo ./utils/check_ports.py
+
 .PHONY: maintenance
 maintenance:
 	@$(MAKE) upgrade
@@ -134,6 +142,7 @@ maintenance:
 
 	@$(MAKE) plan
 	@$(MAKE) configure
+	@$(MAKE) check-ports
 
 .PHONY: reboot
 reboot:
