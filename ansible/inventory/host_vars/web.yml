@@ -8,6 +8,9 @@ firewall_ports4_tcp:
   # wg-api-web
   - port: 1234
     source: 192.168.177.0/24
+  # Anubis Prometheus metrics
+  - port: 9090
+    source: '{{ wg_addr4 }}'
 
 digitalocean_volume_name: web-data
 digitalocean_volume_dir: /mnt/data
