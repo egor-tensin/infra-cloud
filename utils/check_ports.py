@@ -90,10 +90,7 @@ def validate_ports_for(host, expected):
 
 
 def validate_ports_for_all():
-    for host, ports in PORTS.items():
-        if not validate_ports_for(host, ports):
-            return False
-    return True
+    return all([validate_ports_for(host, ports) for host, ports in PORTS.items()])
 
 
 def main():
