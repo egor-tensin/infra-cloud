@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from argparse import ArgumentParser
 import logging
 import subprocess
 import sys
@@ -40,6 +41,9 @@ PORTS["192.168.205.253"] = PORTS["vpn-ru.tensin.name"] + [
     80,  # Web server
     5001,  # Dante
 ]
+
+
+VERBOSE = False
 
 
 def setup_logging():
@@ -84,8 +88,10 @@ def validate_ports_for(host, expected):
     expected = set(expected)
     actual = set(get_open_ports_for(host))
     if expected != actual:
-        logging.error("... Expected: %s", sorted(expected))
-        logging.error("... Actual:   %s", sorted(actual))
+        logging.error("... There was a mismatch")
+        if VERBOSE:
+            logging.error("... Expected: %s", sorted(expected))
+            logging.error("... Actual:   %s", sorted(actual))
         return False
     logging.info("... Looks good")
     return True
@@ -96,6 +102,12 @@ def validate_ports_for_all():
 
 
 def main():
+    parser = ArgumentParser()
+    parser.add_argument("--verbose", "-v", action="store_true", help="verbose output")
+    args = parser.parse_args()
+    global VERBOSE
+    VERBOSE = args.verbose
+
     setup_logging()
     sys.exit(0 if validate_ports_for_all() else 1)
 
