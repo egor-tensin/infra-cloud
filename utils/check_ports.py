@@ -69,7 +69,9 @@ def run(*args, **kwargs):
 
 
 def run_nmap(host):
-    return run("nmap", "-sS", "--open", "-p-", "-T4", "-oX", "-", host)
+    #     -Pn (assume all hosts are up) is used because it doesn't work from
+    #         GitHub Actions otherwise.
+    return run("nmap", "-sS", "--open", "-p-", "-T4", "-Pn", "-oX", "-", host)
 
 
 def get_open_ports_for(host):
