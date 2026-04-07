@@ -114,7 +114,7 @@ check-ports:
 	@echo -----------------------------------------------------------------
 	@echo Checking open ports
 	@echo -----------------------------------------------------------------
-	@sudo ./utils/check_ports.py
+	@./utils/check_ports.py
 
 .PHONY: maintenance
 maintenance:
@@ -142,7 +142,6 @@ maintenance:
 
 	@$(MAKE) plan
 	@$(MAKE) configure
-	@$(MAKE) check-ports
 
 .PHONY: reboot
 reboot:
