@@ -1,5 +1,5 @@
 module "domain_cutestdoggroomer" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.4.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v1.4.0-test"
 
   name       = "cutestdoggroomer.com"
   ip_address = local.ip_web

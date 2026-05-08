@@ -1,5 +1,5 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v1.4.0"
+  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v1.4.0-test"
 
   # See infra-terraform for details.
   #image = ""
