@@ -1,0 +1,52 @@
+name: infra
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Ansible hosts'
+        type: string
+        default: all
+        required: false
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+      AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+      DIGITALOCEAN_TOKEN: '${{ secrets.DIGITALOCEAN_TOKEN }}'
+      YC_SERVICE_ACCOUNT_KEY_FILE: '${{ secrets.YC_SERVICE_ACCOUNT_KEY_FILE }}'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v4
+      - name: Set up WireGuard
+        uses: egor-tensin/setup-wireguard@v1
+        with:
+          endpoint: '${{ secrets.WG_ENDPOINT }}'
+          endpoint_public_key: '${{ secrets.WG_ENDPOINT_PUBLIC }}'
+          ips: '${{ secrets.WG_IPS }}'
+          allowed_ips: '${{ secrets.WG_ALLOWED_IPS }}'
+          private_key: '${{ secrets.WG_PRIVATE }}'
+          preshared_key: '${{ secrets.WG_PRESHARED }}'
+      - name: Set up ssh-agent
+        uses: webfactory/ssh-agent@v0.10.0
+        with:
+          ssh-private-key: '${{ secrets.SSH_KEY }}'
+      - name: Configure git
+        run: |
+          # See https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run maintenance
+        run: |
+          make maintenance 'LIMIT=${{ inputs.limit }}'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nmap
+      - name: Check ports
+        run: |
+          sudo ./utils/check_ports.py
