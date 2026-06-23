@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from argparse import ArgumentParser
+from contextlib import contextmanager
 import logging
 import subprocess
 import sys
@@ -46,6 +47,7 @@ PORTS["192.168.205.253"] = PORTS["vpn-ru.tensin.name"] + [
 VERBOSE = False
 
 
+@contextmanager
 def setup_logging():
     logging.basicConfig(
         level=logging.DEBUG,
@@ -53,6 +55,11 @@ def setup_logging():
         # The 8 below is for "CRITICAL"
         format="%(asctime)s | %(levelname)8s | %(message)s",
     )
+    try:
+        yield
+    except Exception as e:
+        logging.exception(e)
+        sys.exit(1)
 
 
 def run(*args, **kwargs):
@@ -105,11 +112,12 @@ def main():
     parser = ArgumentParser()
     parser.add_argument("--verbose", "-v", action="store_true", help="verbose output")
     args = parser.parse_args()
+
     global VERBOSE
     VERBOSE = args.verbose
 
-    setup_logging()
-    sys.exit(0 if validate_ports_for_all() else 1)
+    with setup_logging():
+        sys.exit(0 if validate_ports_for_all() else 1)
 
 
 if __name__ == "__main__":
