@@ -49,11 +49,20 @@ VERBOSE = False
 
 @contextmanager
 def setup_logging():
+    level_names = {
+        logging.DEBUG: "DBG",
+        logging.INFO: "INFO",
+        logging.WARNING: "WARN",
+        logging.ERROR: "ERR",
+        logging.CRITICAL: "CRIT",
+    }
+    for lvl, name in level_names.items():
+        logging.addLevelName(lvl, name)
+
     logging.basicConfig(
         level=logging.DEBUG,
         datefmt="%Y-%m-%d %H:%M:%S%z",
-        # The 8 below is for "CRITICAL"
-        format="%(asctime)s | %(levelname)8s | %(message)s",
+        format="%(asctime)s | %(levelname)4s | %(message)s",
     )
     try:
         yield
