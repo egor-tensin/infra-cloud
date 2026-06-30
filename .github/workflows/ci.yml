@@ -15,5 +15,7 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Run black
+      - name: Run Black
         uses: psf/black@stable
+      - name: Run terraform fmt
+        uses: dflook/terraform-fmt-check@v2
