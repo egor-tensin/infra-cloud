@@ -72,7 +72,7 @@ def setup_logging():
 
 
 def run(*args, **kwargs):
-    logging.debug("Running: %s", args)
+    logging.debug("Running: %s", subprocess.list2cmdline(args))
     try:
         result = subprocess.run(
             args,
