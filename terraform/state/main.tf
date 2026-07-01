@@ -1,5 +1,5 @@
 module "state" {
-  source = "github.com/egor-tensin/infra-terraform//aws/state?ref=v1.5.0"
+  source = "github.com/egor-tensin/infra-terraform//aws/state?ref=v1.6.0"
 
   bucket_name = "tensin-terraform-state"
 }

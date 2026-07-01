@@ -4,7 +4,8 @@ variable "region" {
 }
 variable "region_ru" {
   type    = string
-  default = "ru-central1-a"
+  default = "ru-central1-d"
+  # ^^^ The recommended default for "new projects" as of June '26
 }
 
 variable "name" {
