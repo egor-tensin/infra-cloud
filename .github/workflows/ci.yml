@@ -18,4 +18,4 @@ jobs:
       - name: Run Black
         uses: psf/black@stable
       - name: Run terraform fmt
-        uses: dflook/terraform-fmt-check@v2
+        uses: dflook/terraform-fmt-check@v3
