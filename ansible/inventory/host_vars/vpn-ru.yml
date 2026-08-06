@@ -13,7 +13,7 @@ firewall_ports_udp:
   - '{{ wg_listen_port }}'
 
 my_workspace_projects:
-  - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn-ru.git'
+  - url: 'ssh://git@altssh.bitbucket.org:443/egor-tensin/server-tensin-vpn-ru.git'
     name: server
 
 wg_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
