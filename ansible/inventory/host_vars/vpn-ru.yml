@@ -32,18 +32,6 @@ wg_peers:
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
     preshared_key: wD2zpF415fBg9XXuoPVJIB4jcjE4kIk+kVC1NF2aLFI=
     allowed_ips: ['{{ wg_prefix4 }}.2/32', '{{ wg_prefix6 }}.2/128']
-  # daria-phone
-  - public_key: nE628227u2v0cUISn81aMtsKnrSkO/tqBE7bClyYU3Y=
-    preshared_key: 0KbvrO9hDh5dHVuK1XVASkZLIHl5o65L+vYXVyKEsxM=
-    allowed_ips: ['{{ wg_prefix4 }}.12/32', '{{ wg_prefix6 }}.12/128']
-  # daria-ipad
-  - public_key: RJjN5vSiBFUTzZrKSR+27FBGvSn41CmGBMgQShiOGAc=
-    preshared_key: ZHa3A5Bwn9SjY//NJLwHNW2c046nf0nwIC7eFvx3QfI=
-    allowed_ips: ['{{ wg_prefix4 }}.14/32', '{{ wg_prefix6 }}.14/128']
-  # daria-laptop2
-  - public_key: RMGaFRWhmFCv75/rA8kMMqhPpWbgLAyeaQ0LV6gxRg0=
-    preshared_key: 4SlMh3unV6TLhT62Q2PACO8oFpi7+yLW+F3XAYsf1YY=
-    allowed_ips: ['{{ wg_prefix4 }}.15/32', '{{ wg_prefix6 }}.15/128']
   # tensin-phone3
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
     preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
@@ -56,6 +44,8 @@ wg_peers:
   - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
     preshared_key: FER0tTq0hnPqFk5TtvsEUp8YKIYgRdQ++m4RFPij5lE=
     allowed_ips: ['{{ wg_prefix4 }}.21/32', '{{ wg_prefix6 }}.21/128']
+
+# ^^^ Next is 22
 
 wg_dependent_services:
   - danted
