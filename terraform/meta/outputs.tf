@@ -28,13 +28,3 @@ output "vpc_id" {
 output "subnet_id_ru" {
   value = yandex_vpc_subnet.this.id
 }
-
-output "server_ip_vpn" {
-  value = local.ip_vpn
-}
-output "server_ip_web" {
-  value = local.ip_web
-}
-output "server_ip_vpn_ru" {
-  value = local.ip_vpn_ru
-}

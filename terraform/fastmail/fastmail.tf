@@ -1,8 +1,8 @@
 locals {
   # The list of domains to configure:
   domains = [
-    module.domain_new.domain_id,
-    module.domain_cutestdoggroomer.domain_id,
+    data.terraform_remote_state.domains.outputs.domain_id_new,
+    data.terraform_remote_state.domains.outputs.domain_id_cutestdoggroomer,
   ]
 }
 

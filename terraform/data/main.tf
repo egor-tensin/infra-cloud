@@ -1,5 +1,5 @@
 module "data_vpn" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/data_volume?ref=v1.6.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/data_volume?ref=v2.0.0"
 
   region     = data.terraform_remote_state.meta.outputs.region
   project_id = data.terraform_remote_state.meta.outputs.project_id
@@ -8,7 +8,7 @@ module "data_vpn" {
 }
 
 module "data_web" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/data_volume?ref=v1.6.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/data_volume?ref=v2.0.0"
 
   region     = data.terraform_remote_state.meta.outputs.region
   project_id = data.terraform_remote_state.meta.outputs.project_id

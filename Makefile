@@ -37,6 +37,8 @@ init: init/meta init/data
 init: init/vpn-ru
 init: init/vpn
 init: init/web
+init: init/domains
+init: init/fastmail
 
 .PHONY: upgrade
 upgrade: tf_init_args := -upgrade
@@ -56,6 +58,8 @@ plan: plan/meta plan/data
 plan: plan/vpn-ru
 plan: plan/vpn
 plan: plan/web
+plan: plan/domains
+plan: plan/fastmail
 
 apply/%: DO
 	@echo
@@ -71,6 +75,8 @@ apply: apply/meta apply/data
 apply: apply/vpn-ru
 apply: apply/vpn
 apply: apply/web
+apply: apply/domains
+apply: apply/fastmail
 
 destroy/%: DO
 	@echo

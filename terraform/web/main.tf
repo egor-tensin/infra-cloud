@@ -1,5 +1,5 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v1.6.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v2.0.0"
 
   # See infra-terraform for details.
   #image = ""
@@ -10,7 +10,6 @@ module "server" {
 
   name       = "web-server"
   vpc_id     = data.terraform_remote_state.meta.outputs.vpc_id
-  ip_address = data.terraform_remote_state.meta.outputs.server_ip_web
   volume_ids = [data.terraform_remote_state.data.outputs.volume_id_web]
 
   user     = data.terraform_remote_state.meta.outputs.user
