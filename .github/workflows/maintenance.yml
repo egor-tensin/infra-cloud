@@ -8,6 +8,11 @@ on:
         type: string
         default: all
         required: false
+      check_ports:
+        description: 'Check ports'
+        type: boolean
+        default: true
+        required: false
 
 jobs:
   maintenance:
@@ -49,5 +54,6 @@ jobs:
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nmap
       - name: Check ports
+        if: inputs.check_ports
         run: |
           sudo ./utils/check_ports.py
