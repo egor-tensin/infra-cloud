@@ -7,9 +7,6 @@ ifndef DIGITALOCEAN_TOKEN
 $(error Please execute `source setenv.sh` first)
 endif
 
-.PHONY: DO
-DO:
-
 tf_backend_config := $(abspath ./terraform/config.s3.tfbackend)
 
 tf_init_args :=
