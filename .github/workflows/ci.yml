@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: '3.x'
-      - name: Run Black
+      - name: Check Python formatting
         uses: psf/black@stable
-      - name: Run terraform fmt
+      - name: Check Terraform formatting
         uses: dflook/terraform-fmt-check@v3
