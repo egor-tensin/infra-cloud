@@ -19,3 +19,7 @@ jobs:
         uses: psf/black@stable
       - name: Check Terraform formatting
         uses: dflook/terraform-fmt-check@v3
+      - name: Check Ansible config
+        run: |
+          cd ansible
+          ansible-config validate --type all
