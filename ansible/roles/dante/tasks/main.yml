@@ -1,14 +1,12 @@
-- name: Configure Dante
+- name: Create /etc/danted.conf
   become: true
-  block:
-    - name: Create /etc/danted.conf
-      ansible.builtin.template:
-        src: danted.conf.j2
-        dest: /etc/danted.conf
-        owner: root
-        group: root
-        mode: '644'
-      notify: dante_configured
+  ansible.builtin.template:
+    src: danted.conf.j2
+    dest: /etc/danted.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: dante_configured
 
 - name: Restart Dante service if necessary
   ansible.builtin.meta: flush_handlers

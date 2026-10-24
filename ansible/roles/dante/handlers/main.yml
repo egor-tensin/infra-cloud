@@ -1,13 +1,14 @@
 # Don't restart if it's not running.
 - name: Collect service facts
-  ansible.builtin.service_facts:
   listen: dante_configured
+  ansible.builtin.service_facts:
 
 - name: Restart Dante service
-  become: true
+  listen: dante_configured
   when: |
-    'danted.service' in ansible_facts.services and ansible_facts.services['danted.service'].state == 'running'
+    'danted.service' in ansible_facts.services
+    and ansible_facts.services['danted.service'].state == 'running'
+  become: true
   ansible.builtin.systemd_service:
     name: danted
     state: restarted
-  listen: dante_configured

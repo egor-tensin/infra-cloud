@@ -1,13 +1,14 @@
 # Don't restart if it's not running.
 - name: Collect service facts
-  ansible.builtin.service_facts:
   listen: i2pd_configured
+  ansible.builtin.service_facts:
 
 - name: Restart i2pd service
-  become: true
+  listen: i2pd_configured
   when: |
-    'i2pd.service' in ansible_facts.services and ansible_facts.services['i2pd.service'].state == 'running'
+    'i2pd.service' in ansible_facts.services
+    and ansible_facts.services['i2pd.service'].state == 'running'
+  become: true
   ansible.builtin.systemd_service:
     name: i2pd
     state: restarted
-  listen: i2pd_configured
