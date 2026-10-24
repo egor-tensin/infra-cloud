@@ -11,7 +11,7 @@ on:
       check_ports:
         description: 'Check ports'
         type: boolean
-        default: true
+        default: false
         required: false
 
 permissions: {}
