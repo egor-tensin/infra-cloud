@@ -10,6 +10,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     name: Linting
+    permissions:
+      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -27,3 +29,5 @@ jobs:
         run: |
           cd ansible
           ansible-config validate --type all
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@v0.7.1
