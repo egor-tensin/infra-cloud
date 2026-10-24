@@ -1,23 +1,23 @@
 firewall_ports4_tcp:
   # server-tensin-vpn
   - port: 80
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
   # wg-api-web
   - port: 1234
     source: 192.168.177.1/24
   # Dante
   - port: '{{ dante_port }}'
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
   # i2pd
   - port: '{{ i2pd_port_console }}'
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
   - port: '{{ i2pd_port_http_proxy }}'
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
   - port: '{{ i2pd_port_socks_proxy }}'
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
   # Tor
   - port: '{{ tor_port_socks_proxy }}'
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
 firewall_ports_tcp:
   # i2pd
   - '{{ i2pd_port }}'
@@ -26,7 +26,7 @@ firewall_ports_tcp:
   - '{{ tor_port_or }}'
 firewall_ports_udp:
   # WireGuard
-  - '{{ wg_listen_port }}'
+  - '{{ wireguard_listen_port }}'
 
 digitalocean_volume_name: vpn-data
 digitalocean_volume_dir: /mnt/data
@@ -41,48 +41,48 @@ my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
     name: server
 
-wg_private_key: AL2RI6nHtcT6ErWJi1BgzxWQf38KcTmfyr1nBapFAGY=
-wg_addr4: '{{ wg_prefix4 }}.254/24'
-wg_addr6: '{{ wg_prefix6 }}.254/48'
-wg_server: true
+wireguard_private_key: AL2RI6nHtcT6ErWJi1BgzxWQf38KcTmfyr1nBapFAGY=
+wireguard_addr4: '{{ wireguard_prefix4 }}.254/24'
+wireguard_addr6: '{{ wireguard_prefix6 }}.254/48'
+wireguard_server: true
 
-wg_peers:
+wireguard_peers:
   # tensin-vpn-ru
   - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
     preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
-    allowed_ips: ['{{ wg_prefix4 }}.253/32', '{{ wg_prefix6 }}.253/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.253/32', '{{ wireguard_prefix6 }}.253/128']
   # tensin-laptop2
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
     preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
-    allowed_ips: ['{{ wg_prefix4 }}.2/32', '{{ wg_prefix6 }}.2/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.2/32', '{{ wireguard_prefix6 }}.2/128']
   # tensin-raspi2
   - public_key: UWqQrP6yvW/5FCSgbUqGfljNLzJRzQM00w/NP5VVYm4=
     preshared_key: f/gBtPEZJtw1BDM+dmXAGLNE0lpsYl083a5Z+skVkKk=
-    allowed_ips: ['{{ wg_prefix4 }}.4/32', '{{ wg_prefix6 }}.4/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.4/32', '{{ wireguard_prefix6 }}.4/128']
   # tensin-web
   - public_key: 2qjay8ABLTrE8maY7ulQM186XdK71uKdiI+3rf3wA1E=
     preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
-    allowed_ips: ['{{ wg_prefix4 }}.8/32', '{{ wg_prefix6 }}.8/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.8/32', '{{ wireguard_prefix6 }}.8/128']
   # GitHub
   - public_key: YDI1OzWMy1u7Cw3JjSLSGwKgqglPEw/KTAszEsBSOgQ=
     preshared_key: cRksPxECPvmnR6Eu4D4yNuE3swTiP05S2yMxQrFxHwc=
-    allowed_ips: ['{{ wg_prefix4 }}.9/32', '{{ wg_prefix6 }}.9/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.9/32', '{{ wireguard_prefix6 }}.9/128']
   # tensin-phone3
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
     preshared_key: iRdYcUGMXoZDj2xgXa81qSyx34P3Pt+UXNJtMCeuDQM=
-    allowed_ips: ['{{ wg_prefix4 }}.16/32', '{{ wg_prefix6 }}.16/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.16/32', '{{ wireguard_prefix6 }}.16/128']
   # tensin-pc2
   - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
     preshared_key: CGVI3hK1q2qWv2NBSumq2/Z4Vvh/ksiwBLhbdKGt8RI=
-    allowed_ips: ['{{ wg_prefix4 }}.19/32', '{{ wg_prefix6 }}.19/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.19/32', '{{ wireguard_prefix6 }}.19/128']
   # tensin-laptop3
   - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
     preshared_key: rzr4K1HA7gE5ai0A7hu0k+voGMCyehqWtzNi6YG6hvo=
-    allowed_ips: ['{{ wg_prefix4 }}.21/32', '{{ wg_prefix6 }}.21/128']
+    allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 
 # ^^^ Next is 22
 
-wg_dependent_services:
+wireguard_dependent_services:
   - danted
   - i2pd
   - tor@default

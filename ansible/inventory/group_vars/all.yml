@@ -3,11 +3,11 @@ my_email: egor@tensin.name
 
 docker_logging_driver: local
 
-wg_prefix4: '192.168.205'
-wg_prefix6: 'fd9d:bc11:4021::192.168.205'
-wg_name: vpn
-wg_listen_port: 443
-wg_autoconnect: true
+wireguard_prefix4: '192.168.205'
+wireguard_prefix6: 'fd9d:bc11:4021::192.168.205'
+wireguard_name: vpn
+wireguard_listen_port: 443
+wireguard_autoconnect: true
 
 my_workspace_git_name: '{{ my_name }}'
 my_workspace_git_email: '{{ my_email }}'

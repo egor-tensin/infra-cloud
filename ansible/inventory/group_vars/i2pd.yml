@@ -1,4 +1,4 @@
-i2pd_address_internal: '{{ wg_addr4 | regex_replace("/\d+$", "") }}'
+i2pd_address_internal: '{{ wireguard_addr4 | regex_replace("/\d+$", "") }}'
 
 i2pd_port_socks_proxy: 6001
 i2pd_port_http_proxy: 6002

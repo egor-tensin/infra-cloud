@@ -10,7 +10,7 @@ firewall_ports4_tcp:
     source: 192.168.177.0/24
   # Anubis Prometheus metrics
   - port: 9090
-    source: '{{ wg_addr4 }}'
+    source: '{{ wireguard_addr4 }}'
 
 digitalocean_volume_name: web-data
 digitalocean_volume_dir: /mnt/data
@@ -37,13 +37,13 @@ my_workspace_dependencies:
   - python3-pytest
   - python3-requests
 
-wg_private_key: WBO8t16PPpVnKa4EXpFCHT8vwJuPt5qmpYGLMfvjsG8=
-wg_addr4: '{{ wg_prefix4 }}.8/24'
-wg_addr6: '{{ wg_prefix6 }}.8/48'
+wireguard_private_key: WBO8t16PPpVnKa4EXpFCHT8vwJuPt5qmpYGLMfvjsG8=
+wireguard_addr4: '{{ wireguard_prefix4 }}.8/24'
+wireguard_addr6: '{{ wireguard_prefix6 }}.8/48'
 
-wg_peers:
+wireguard_peers:
   - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
     preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
-    allowed_ips: ['{{ wg_prefix4 }}.0/24', '{{ wg_prefix6 }}.0/48']
+    allowed_ips: ['{{ wireguard_prefix4 }}.0/24', '{{ wireguard_prefix6 }}.0/48']
     endpoint: vpn.tensin.name:443
     persistent_keepalive: true
