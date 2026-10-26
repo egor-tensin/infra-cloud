@@ -1,8 +1,0 @@
-dependencies:
-  - role: tensin.infra.apt_repo
-    vars:
-      # Lookie here: https://repo.i2pd.xyz/.help/readme.html
-      apt_repo_name: i2pd
-      apt_repo_url: https://repo.i2pd.xyz/
-      apt_repo_key_url: https://repo.i2pd.xyz/r4sas.gpg
-      apt_repo_key_dearmor: true

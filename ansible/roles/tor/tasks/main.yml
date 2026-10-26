@@ -1,3 +1,26 @@
+- name: Get host distro
+  ansible.builtin.setup:
+    gather_subset:
+      - distribution
+      - distribution_release
+
+- name: Configure repository
+  become: true
+  ansible.builtin.deb822_repository:
+    name: tor
+    uris: https://deb.torproject.org/torproject.org
+    state: present
+    signed_by: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
+    suites: "{{ ansible_facts['distribution_release'] | lower }}"
+    components: main
+  register: repo
+
+- name: Update apt cache
+  when: repo is changed
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+
 - name: Configure Tor
   become: true
   block:
