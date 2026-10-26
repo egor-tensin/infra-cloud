@@ -2,7 +2,7 @@
   hosts: all
   gather_facts: false
   roles:
-    - tensin.infra.debian_cloud_server
+    - tensin.infra.debian_cloud
     - tensin.infra.wireguard
 
 - name: Attach volumes
