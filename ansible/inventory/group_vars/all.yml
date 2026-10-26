@@ -1,6 +1,7 @@
 my_name: Egor Tensin
 my_email: egor@tensin.name
 
+docker_enable_service: true
 docker_logging_driver: local
 
 wireguard_prefix4: '192.168.205'
