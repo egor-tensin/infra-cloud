@@ -33,15 +33,15 @@ digitalocean_volume_dir: /mnt/data
 digitalocean_volume_dependent_services:
   - tor@default
 
-tor_nickname: justiceforall
-tor_email: calm.tent0890@fastmail.com
+tor_nickname: '{{ vpn.tor.nickname }}'
+tor_email: '{{ vpn.tor.email }}'
 tor_data_dir: '{{ digitalocean_volume_dir }}/tor'
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'
     name: server
 
-wireguard_private_key: AL2RI6nHtcT6ErWJi1BgzxWQf38KcTmfyr1nBapFAGY=
+wireguard_private_key: '{{ vpn.wg.private_key }}'
 wireguard_addr4: '{{ wireguard_prefix4 }}.254/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.254/48'
 wireguard_server: true
@@ -49,35 +49,35 @@ wireguard_server: true
 wireguard_peers:
   # tensin-vpn-ru
   - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
-    preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
+    preshared_key: '{{ vpn.wg.psk.vpn_ru }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.253/32', '{{ wireguard_prefix6 }}.253/128']
   # tensin-laptop2
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
-    preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
+    preshared_key: '{{ vpn.wg.psk.laptop2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.2/32', '{{ wireguard_prefix6 }}.2/128']
   # tensin-raspi2
   - public_key: UWqQrP6yvW/5FCSgbUqGfljNLzJRzQM00w/NP5VVYm4=
-    preshared_key: f/gBtPEZJtw1BDM+dmXAGLNE0lpsYl083a5Z+skVkKk=
+    preshared_key: '{{ vpn.wg.psk.raspi2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.4/32', '{{ wireguard_prefix6 }}.4/128']
   # tensin-web
   - public_key: 2qjay8ABLTrE8maY7ulQM186XdK71uKdiI+3rf3wA1E=
-    preshared_key: wsHq7wIWO1uyQfojVyT45cnfhT0hnhg3KkobPhQnIyE=
+    preshared_key: '{{ vpn.wg.psk.web }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.8/32', '{{ wireguard_prefix6 }}.8/128']
   # GitHub
   - public_key: YDI1OzWMy1u7Cw3JjSLSGwKgqglPEw/KTAszEsBSOgQ=
-    preshared_key: cRksPxECPvmnR6Eu4D4yNuE3swTiP05S2yMxQrFxHwc=
+    preshared_key: '{{ vpn.wg.psk.github }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.9/32', '{{ wireguard_prefix6 }}.9/128']
   # tensin-phone3
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
-    preshared_key: iRdYcUGMXoZDj2xgXa81qSyx34P3Pt+UXNJtMCeuDQM=
+    preshared_key: '{{ vpn.wg.psk.phone3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.16/32', '{{ wireguard_prefix6 }}.16/128']
   # tensin-pc2
   - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
-    preshared_key: CGVI3hK1q2qWv2NBSumq2/Z4Vvh/ksiwBLhbdKGt8RI=
+    preshared_key: '{{ vpn.wg.psk.pc2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.19/32', '{{ wireguard_prefix6 }}.19/128']
   # tensin-laptop3
   - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
-    preshared_key: rzr4K1HA7gE5ai0A7hu0k+voGMCyehqWtzNi6YG6hvo=
+    preshared_key: '{{ vpn.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 
 # ^^^ Next is 22

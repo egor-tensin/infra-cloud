@@ -16,7 +16,7 @@ my_workspace_projects:
   - url: 'ssh://git@altssh.bitbucket.org:443/egor-tensin/server-tensin-vpn-ru.git'
     name: server
 
-wireguard_private_key: qHA1bW+yjurJuumn0RrwG35eloeAd25A2464W212L2o=
+wireguard_private_key: '{{ vpn_ru.wg.private_key }}'
 wireguard_addr4: '{{ wireguard_prefix4 }}.253/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.253/48'
 wireguard_server: true
@@ -24,25 +24,25 @@ wireguard_server: true
 wireguard_peers:
   # tensin-vpn
   - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
-    preshared_key: TviLI3ve3EDt6LsBYWes0e0QO3x0jBIS/wjjBTSV/Og=
+    preshared_key: '{{ vpn_ru.wg.psk.vpn }}'
     allowed_ips: ['{{ wireguard_addr4 }}', '{{ wireguard_addr6 }}']
     endpoint: vpn.tensin.name:443
     persistent_keepalive: true
   # tensin-laptop2
   - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
-    preshared_key: wD2zpF415fBg9XXuoPVJIB4jcjE4kIk+kVC1NF2aLFI=
+    preshared_key: '{{ vpn_ru.wg.psk.laptop2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.2/32', '{{ wireguard_prefix6 }}.2/128']
   # tensin-phone3
   - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
-    preshared_key: +zs0Wqvlvs0nIsUGNzwk34+x9mlJntbDUGXpcsNX+EA=
+    preshared_key: '{{ vpn_ru.wg.psk.phone3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.16/32', '{{ wireguard_prefix6 }}.16/128']
   # tensin-pc2
   - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
-    preshared_key: CL9xiWX3CtFaCPESpmCQblLubv8ZXjfNAW5O0H4M30w=
+    preshared_key: '{{ vpn_ru.wg.psk.pc2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.19/32', '{{ wireguard_prefix6 }}.19/128']
   # tensin-laptop3
   - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
-    preshared_key: FER0tTq0hnPqFk5TtvsEUp8YKIYgRdQ++m4RFPij5lE=
+    preshared_key: '{{ vpn_ru.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 
 # ^^^ Next is 22

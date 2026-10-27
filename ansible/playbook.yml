@@ -1,6 +1,8 @@
 - name: General maintenance
   hosts: all
   gather_facts: false
+  vars_files:
+    - vars/vault.yml
   roles:
     - tensin.infra.debian_cloud
     - tensin.infra.wireguard
