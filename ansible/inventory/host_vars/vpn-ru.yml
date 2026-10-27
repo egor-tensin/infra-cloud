@@ -23,25 +23,25 @@ wireguard_server: true
 
 wireguard_peers:
   # tensin-vpn
-  - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
+  - public_key: hMKs36wq+gnp6fVIIgGRVL42q78+Rnj/3RCEWGA69Bs=
     preshared_key: '{{ vpn_ru.wg.psk.vpn }}'
     allowed_ips: ['{{ wireguard_addr4 }}', '{{ wireguard_addr6 }}']
     endpoint: vpn.tensin.name:443
     persistent_keepalive: true
   # tensin-laptop2
-  - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
+  - public_key: qLmfXqkSf+S4fU3n1GRU1nkuYCnQXcZb1ebAru/4C2U=
     preshared_key: '{{ vpn_ru.wg.psk.laptop2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.2/32', '{{ wireguard_prefix6 }}.2/128']
   # tensin-phone3
-  - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
+  - public_key: SUwBB3GKMhz9lRvO2Cp2qaIW11cZ/38cb25NQ6wl9x8=
     preshared_key: '{{ vpn_ru.wg.psk.phone3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.16/32', '{{ wireguard_prefix6 }}.16/128']
   # tensin-pc2
-  - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
+  - public_key: xD/Gy9P78zDDxWY64n8G5Ku3zkR8B/SPgSYVCt1ekgE=
     preshared_key: '{{ vpn_ru.wg.psk.pc2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.19/32', '{{ wireguard_prefix6 }}.19/128']
   # tensin-laptop3
-  - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
+  - public_key: DZM1fZ5VET/FTQj2QrRLcMxdrVnrRMBU8i5MDvI/NzI=
     preshared_key: '{{ vpn_ru.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 

@@ -48,35 +48,35 @@ wireguard_server: true
 
 wireguard_peers:
   # tensin-vpn-ru
-  - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
+  - public_key: XW2gwuu1pVYe4cXuk32jsgvqstx7Yd0/hj3hefRzaXQ=
     preshared_key: '{{ vpn.wg.psk.vpn_ru }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.253/32', '{{ wireguard_prefix6 }}.253/128']
   # tensin-laptop2
-  - public_key: w8dZjb5wQst1agoO6JAvZqBXvQvRdQfn4xjl80XlkHc=
+  - public_key: qLmfXqkSf+S4fU3n1GRU1nkuYCnQXcZb1ebAru/4C2U=
     preshared_key: '{{ vpn.wg.psk.laptop2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.2/32', '{{ wireguard_prefix6 }}.2/128']
   # tensin-raspi2
-  - public_key: UWqQrP6yvW/5FCSgbUqGfljNLzJRzQM00w/NP5VVYm4=
+  - public_key: JyZ7JPKRWGMRvBs3TMFr/L5zeaf9BVodQiqxMDomgyE=
     preshared_key: '{{ vpn.wg.psk.raspi2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.4/32', '{{ wireguard_prefix6 }}.4/128']
   # tensin-web
-  - public_key: 2qjay8ABLTrE8maY7ulQM186XdK71uKdiI+3rf3wA1E=
+  - public_key: cdDUL23pedFMDMB5Lit9kq1cbelVI2QRBaU8ziGzNxk=
     preshared_key: '{{ vpn.wg.psk.web }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.8/32', '{{ wireguard_prefix6 }}.8/128']
   # GitHub
-  - public_key: YDI1OzWMy1u7Cw3JjSLSGwKgqglPEw/KTAszEsBSOgQ=
+  - public_key: 6/deu6xSw/3+uaHE+ObxEZN/DhKHLSWGhs7dCQABIi4=
     preshared_key: '{{ vpn.wg.psk.github }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.9/32', '{{ wireguard_prefix6 }}.9/128']
   # tensin-phone3
-  - public_key: vT+f5iMPiLUBzQpr8icGgN3GYWFXgVDV7bkKdEWx1lo=
+  - public_key: SUwBB3GKMhz9lRvO2Cp2qaIW11cZ/38cb25NQ6wl9x8=
     preshared_key: '{{ vpn.wg.psk.phone3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.16/32', '{{ wireguard_prefix6 }}.16/128']
   # tensin-pc2
-  - public_key: 590xXoTiBhPjlWTUTABQWI4BfIp0w9xXemBrdgRHIDs=
+  - public_key: xD/Gy9P78zDDxWY64n8G5Ku3zkR8B/SPgSYVCt1ekgE=
     preshared_key: '{{ vpn.wg.psk.pc2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.19/32', '{{ wireguard_prefix6 }}.19/128']
   # tensin-laptop3
-  - public_key: V6QbOvGuTvQyQ5JkN4j8/g2bGAgHnHOJv8sUjbyDoxw=
+  - public_key: DZM1fZ5VET/FTQj2QrRLcMxdrVnrRMBU8i5MDvI/NzI=
     preshared_key: '{{ vpn.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 
