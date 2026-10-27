@@ -24,23 +24,13 @@
 
 - name: Configure i2pd
   become: true
-  block:
-    - name: Create /etc/i2pd
-      ansible.builtin.file:
-        path: /etc/i2pd
-        state: directory
-        owner: root
-        group: root
-        mode: '0755'
-
-    - name: Create /etc/i2pd/i2pd.conf
-      ansible.builtin.template:
-        src: i2pd.conf.j2
-        dest: /etc/i2pd/i2pd.conf
-        owner: root
-        group: root
-        mode: '0644'
-      notify: i2pd_configured
+  tensin.infra.template:
+    src: i2pd.conf.j2
+    dest: /etc/i2pd/i2pd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: i2pd_configured
 
 - name: Restart i2pd service if necessary
   ansible.builtin.meta: flush_handlers

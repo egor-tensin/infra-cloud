@@ -23,43 +23,23 @@
 
 - name: Configure Tor
   become: true
-  block:
-    - name: Create /etc/tor
-      ansible.builtin.file:
-        path: /etc/tor
-        state: directory
-        owner: root
-        group: root
-        mode: '0755'
-
-    - name: Create /etc/tor/torrc
-      ansible.builtin.template:
-        src: torrc.j2
-        dest: /etc/tor/torrc
-        owner: root
-        group: root
-        mode: '0644'
-      notify: tor_configured
+  tensin.infra.template:
+    src: torrc.j2
+    dest: /etc/tor/torrc
+    owner: root
+    group: root
+    mode: '0644'
+  notify: tor_configured
 
 - name: Configure systemd service
   become: true
-  block:
-    - name: Create override directory
-      ansible.builtin.file:
-        path: /etc/systemd/system/tor@default.service.d
-        state: directory
-        owner: root
-        group: root
-        mode: '0755'
-
-    - name: Create service override
-      ansible.builtin.template:
-        src: override.conf.j2
-        dest: /etc/systemd/system/tor@default.service.d/data_dir.conf
-        owner: root
-        group: root
-        mode: '0644'
-      notify: tor_configured
+  tensin.infra.template:
+    src: override.conf.j2
+    dest: /etc/systemd/system/tor@default.service.d/data_dir.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: tor_configured
 
 - name: Restart Tor service if necessary
   ansible.builtin.meta: flush_handlers
