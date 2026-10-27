@@ -40,6 +40,8 @@
 - name: Set up Tor
   hosts: tor
   gather_facts: false
+  vars_files:
+    - vars/vault.yml
   roles:
     - tor
 
