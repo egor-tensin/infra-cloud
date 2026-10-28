@@ -40,7 +40,6 @@ my_workspace_dependencies:
 wireguard_private_key: '{{ web.wg.private_key }}'
 wireguard_addr4: '{{ wireguard_prefix4 }}.8/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.8/48'
-
 wireguard_peers:
   - public_key: hMKs36wq+gnp6fVIIgGRVL42q78+Rnj/3RCEWGA69Bs=
     preshared_key: '{{ web.wg.psk.vpn }}'

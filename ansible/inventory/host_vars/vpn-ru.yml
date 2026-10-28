@@ -20,7 +20,6 @@ wireguard_private_key: '{{ vpn_ru.wg.private_key }}'
 wireguard_addr4: '{{ wireguard_prefix4 }}.253/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.253/48'
 wireguard_server: true
-
 wireguard_peers:
   # tensin-vpn
   - public_key: hMKs36wq+gnp6fVIIgGRVL42q78+Rnj/3RCEWGA69Bs=
@@ -44,7 +43,6 @@ wireguard_peers:
   - public_key: DZM1fZ5VET/FTQj2QrRLcMxdrVnrRMBU8i5MDvI/NzI=
     preshared_key: '{{ vpn_ru.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
-
 # ^^^ Next is 22
 
 wireguard_dependent_services:
