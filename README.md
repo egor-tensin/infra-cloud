@@ -1,64 +1,63 @@
-Setting up
-==========
+infra-cloud
+===========
 
-AWS
----
+Trying to make my cloud VM setups fully automated.
 
-### CLI
+Setup
+-----
 
-    aws --profile infra configure
+On _my_ machines, this should _theoritically_ be fully automated by
+[infra-metal].
 
-The default region should be "eu-central-1".
+[infra-metal]: https://github.com/egor-tensin/infra-metal
 
-### Terraform
+### AWS
 
-* If you configured the CLI, you can do
+* **CLI**:
+
+      aws --profile infra configure
+
+    * The default region should be "eu-central-1".
+
+* **Terraform**: if you configured the CLI, you can do
 
       export AWS_PROFILE=infra
 
-* Otherwise, you need to set `AWS_ACCESS_KEY_ID` & `AWS_SECRET_ACCESS_KEY`.
+    * Otherwise, you'll need to set `AWS_ACCESS_KEY_ID` & `AWS_SECRET_ACCESS_KEY`.
 
-DigitalOcean
-------------
+### DigitalOcean
 
-### CLI
+* **CLI**:
 
-    doctl auth init --context infra
+      doctl auth init --context infra
 
-### Terraform
+* **Terraform**: unfortunately, you have to set `DIGITALOCEAN_TOKEN` - there is
+no way to pick up the configured credentials from the CLI.
 
-* Unfortunately, you have to set `DIGITALOCEAN_TOKEN` - there is no way to pick
-up the configured credentials from the CLI.
-
-### Ansible
-
-* The playbooks use the DigitalOcean access token (for Let's Encrypt DNS
-challenges).
+* **Ansible**: the playbooks use the DigitalOcean access token (for Let's
+Encrypt DNS challenges).
 Ansible will prompt for it unless `DIGITALOCEAN_TOKEN` is set.
 
-Yandex.Cloud
-------------
+### Yandex.Cloud
 
-### CLI
+* **CLI**:
 
-    yc config profile create infra
-    yc --profile infra config set service-account-key PATH_TO_AUTHORIZED_KEY_FILE
+      yc config profile create infra
+      yc --profile infra config set service-account-key PATH_TO_AUTHORIZED_KEY_FILE
 
-Don't forget to remove the authorized key file!
+    * Don't forget to remove the authorized key file!
 
-### Terraform
-
-* If you configured the CLI, you can do
+* **Terraform**: if you configured the CLI, you can do
 
       export YC_TOKEN="$( yc --profile infra iam create-token )"
 
-* Otherwise, you need to set `YC_SERVICE_ACCOUNT_KEY_FILE` to the path of the
-authorized key JSON file.
+    * Otherwise, you'll need to set `YC_SERVICE_ACCOUNT_KEY_FILE` to the path
+of the authorized key JSON file.
 
 Terraform
 ---------
 
-* If you configured the CLIs, you can do
+* Once you configured the CLIs, you can do
 
       . setenv.sh
 
@@ -73,10 +72,9 @@ Terraform
       make upgrade
 
 Usage
-=====
+-----
 
-Terraform
----------
+### Terraform
 
 * Check if the infrastructure matches configuration:
 
@@ -86,8 +84,7 @@ Terraform
 
       make apply
 
-Ansible
--------
+### Ansible
 
 * Run the playbook for all hosts:
 
