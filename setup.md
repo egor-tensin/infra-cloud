@@ -1,7 +1,7 @@
 On _my_ machines, this should _theoritically_ be fully automated by
-[infra-metal].
+[infra-desktop].
 
-[infra-metal]: https://github.com/egor-tensin/infra-metal
+[infra-desktop]: https://github.com/egor-tensin/infra-desktop
 
 ### AWS
 
