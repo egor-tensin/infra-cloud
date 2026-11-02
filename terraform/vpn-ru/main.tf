@@ -1,5 +1,5 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v2.0.0"
+  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v2.1.0"
 
   # See infra-terraform for details.
   #image = ""
@@ -14,4 +14,11 @@ module "server" {
   ssh_port = data.terraform_remote_state.meta.outputs.ssh_port
 
   core_fraction = 20
+
+  attached_disks = [
+    {
+      id   = data.terraform_remote_state.data.outputs.volume_id_vpn_ru
+      name = "data"
+    },
+  ]
 }

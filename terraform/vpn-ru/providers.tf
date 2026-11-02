@@ -21,3 +21,13 @@ data "terraform_remote_state" "meta" {
     key    = "meta.tfstate"
   }
 }
+
+data "terraform_remote_state" "data" {
+  backend = "s3"
+
+  config = {
+    region = "eu-central-1"
+    bucket = "tensin-terraform-state"
+    key    = "data.tfstate"
+  }
+}

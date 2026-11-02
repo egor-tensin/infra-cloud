@@ -4,6 +4,9 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = "~> 2.0"
     }
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
   }
   backend "s3" {
     key = "data.tfstate"
@@ -11,6 +14,9 @@ terraform {
 }
 
 provider "digitalocean" {
+}
+
+provider "yandex" {
 }
 
 data "terraform_remote_state" "meta" {
