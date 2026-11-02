@@ -58,10 +58,6 @@ wireguard_peers:
   - public_key: JyZ7JPKRWGMRvBs3TMFr/L5zeaf9BVodQiqxMDomgyE=
     preshared_key: '{{ vpn.wg.psk.raspi2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.4/32', '{{ wireguard_prefix6 }}.4/128']
-  # tensin-web
-  - public_key: cdDUL23pedFMDMB5Lit9kq1cbelVI2QRBaU8ziGzNxk=
-    preshared_key: '{{ vpn.wg.psk.web }}'
-    allowed_ips: ['{{ wireguard_prefix4 }}.8/32', '{{ wireguard_prefix6 }}.8/128']
   # GitHub
   - public_key: 6/deu6xSw/3+uaHE+ObxEZN/DhKHLSWGhs7dCQABIi4=
     preshared_key: '{{ vpn.wg.psk.github }}'
@@ -79,6 +75,10 @@ wireguard_peers:
     preshared_key: '{{ vpn.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 # ^^^ Next is 22
+  # tensin-web
+  - public_key: cdDUL23pedFMDMB5Lit9kq1cbelVI2QRBaU8ziGzNxk=
+    preshared_key: '{{ vpn.wg.psk.web }}'
+    allowed_ips: ['{{ wireguard_prefix4 }}.100/32', '{{ wireguard_prefix6 }}.100/128']
 
 wireguard_dependent_services:
   - danted
