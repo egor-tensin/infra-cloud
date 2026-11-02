@@ -28,14 +28,15 @@ firewall_ports_udp:
   # WireGuard
   - '{{ wireguard_listen_port }}'
 
-digitalocean_volume_name: vpn-data
-digitalocean_volume_dir: /mnt/data
-digitalocean_volume_dependent_services:
+cloud_disk_provider: digitalocean
+cloud_disk_name: vpn-data
+cloud_disk_dir: /mnt/data
+cloud_disk_dependent_services:
   - tor@default
 
 tor_nickname: '{{ vpn.tor.nickname }}'
 tor_email: '{{ vpn.tor.email }}'
-tor_data_dir: '{{ digitalocean_volume_dir }}/tor'
+tor_data_dir: '{{ cloud_disk_dir }}/tor'
 
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-vpn.git'

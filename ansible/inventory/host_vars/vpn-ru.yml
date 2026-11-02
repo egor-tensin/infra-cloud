@@ -12,6 +12,11 @@ firewall_ports_udp:
   # WireGuard
   - '{{ wireguard_listen_port }}'
 
+cloud_disk_provider: yandex
+cloud_disk_name: data
+cloud_disk_dependent_services:
+  - docker
+
 my_workspace_projects:
   - url: 'ssh://git@altssh.bitbucket.org:443/egor-tensin/server-tensin-vpn-ru.git'
     name: server

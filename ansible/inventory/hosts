@@ -2,10 +2,6 @@ vpn	ansible_host=vpn.tensin.name
 vpn-ru	ansible_host=vpn-ru.tensin.name
 web	ansible_host=tensin.name
 
-[digitalocean]
-vpn
-web
-
 [i2pd]
 vpn
 

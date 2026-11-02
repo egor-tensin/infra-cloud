@@ -12,9 +12,10 @@ firewall_ports4_tcp:
   - port: 9090
     source: '{{ wireguard_addr4 }}'
 
-digitalocean_volume_name: web-data
-digitalocean_volume_dir: /mnt/data
-digitalocean_volume_dependent_services:
+cloud_disk_provider: digitalocean
+cloud_disk_name: web-data
+cloud_disk_dir: /mnt/data
+cloud_disk_dependent_services:
   - docker
 
 letsencrypt_domains:
