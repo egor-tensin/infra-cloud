@@ -1,15 +1,12 @@
-output "region" {
-  value = var.region
+output "zone_int" {
+  value = var.zone_int
 }
-output "region_ru" {
-  value = var.region_ru
+output "zone_rus" {
+  value = var.zone_rus
 }
 
 output "project_id" {
   value = digitalocean_project.this.id
-}
-output "project_stub" {
-  value = var.stub
 }
 
 output "user" {
@@ -22,9 +19,9 @@ output "ssh_port" {
   value = var.ssh_port
 }
 
-output "vpc_id" {
+output "vpc_id_int" {
   value = module.vpc_int.id
 }
-output "subnet_id_ru" {
+output "vpc_id_rus" {
   value = module.vpc_rus.id
 }

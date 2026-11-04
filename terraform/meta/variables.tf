@@ -1,8 +1,8 @@
-variable "region_int" {
+variable "zone_int" {
   type    = string
   default = "fra1"
 }
-variable "region_rus" {
+variable "zone_rus" {
   type    = string
   default = "ru-central1-d"
   # ^^^ The recommended default for "new projects" as of June '26
@@ -16,10 +16,6 @@ variable "name" {
 variable "description" {
   type    = string
   default = "My stuff"
-}
-variable "stub" {
-  type    = string
-  default = "personal"
 }
 
 variable "user" {
