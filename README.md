@@ -8,6 +8,18 @@ Setup
 
 See [setup.md](setup.md).
 
+Goal
+----
+
+The goal is to be able to do this:
+
+    . setenv.sh
+    make destroy
+    make apply
+
+idempotetically.
+If that doesn't work, it's a bug.
+
 Terraform
 ---------
 
