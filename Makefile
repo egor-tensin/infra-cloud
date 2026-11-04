@@ -64,7 +64,7 @@ apply/%: DO
 	@echo 'terraform apply: $*'
 	@echo -----------------------------------------------------------------
 	@cd -- 'terraform/$*/' && \
-		terraform apply -auto-approve
+		terraform apply
 
 .PHONY: apply
 apply: apply/state
