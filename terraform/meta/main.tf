@@ -10,19 +10,31 @@ data "digitalocean_ssh_keys" "this" {
   }
 }
 
-resource "digitalocean_vpc" "this" {
-  name   = "${var.stub}-vpc"
-  region = var.region
+module "vpc_int" {
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/vpc?ref=master"
+
+  prefix = lower(var.name)
+  zone   = var.region
 }
 
-resource "yandex_vpc_network" "this" {
-  name = "${var.stub}-vpc"
+moved {
+  from = digitalocean_vpc.this
+  to = module.vpc_int.digitalocean_vpc.this
 }
 
-resource "yandex_vpc_subnet" "this" {
-  network_id = yandex_vpc_network.this.id
+module "vpc_rus" {
+  source = "github.com/egor-tensin/infra-terraform//yandex/vpc?ref=master"
 
-  name           = "${var.stub}-subnet"
-  zone           = var.region_ru
-  v4_cidr_blocks = ["10.0.0.0/22"]
+  prefix = lower(var.name)
+  zone   = var.region_ru
+}
+
+moved {
+  from = yandex_vpc_network.this
+  to = module.vpc_rus.yandex_vpc_network.this
+}
+
+moved {
+  from = yandex_vpc_subnet.this
+  to = module.vpc_rus.yandex_vpc_subnet.this
 }

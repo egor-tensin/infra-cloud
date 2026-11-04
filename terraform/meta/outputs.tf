@@ -23,8 +23,8 @@ output "ssh_port" {
 }
 
 output "vpc_id" {
-  value = digitalocean_vpc.this.id
+  value = module.vpc_int.id
 }
 output "subnet_id_ru" {
-  value = yandex_vpc_subnet.this.id
+  value = module.vpc_rus.id
 }
