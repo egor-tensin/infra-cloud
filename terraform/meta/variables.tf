@@ -1,8 +1,8 @@
-variable "region" {
+variable "region_int" {
   type    = string
   default = "fra1"
 }
-variable "region_ru" {
+variable "region_rus" {
   type    = string
   default = "ru-central1-d"
   # ^^^ The recommended default for "new projects" as of June '26

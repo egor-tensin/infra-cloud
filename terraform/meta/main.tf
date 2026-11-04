@@ -17,24 +17,9 @@ module "vpc_int" {
   zone   = var.region
 }
 
-moved {
-  from = digitalocean_vpc.this
-  to = module.vpc_int.digitalocean_vpc.this
-}
-
 module "vpc_rus" {
   source = "github.com/egor-tensin/infra-terraform//yandex/vpc?ref=master"
 
   prefix = lower(var.name)
   zone   = var.region_ru
-}
-
-moved {
-  from = yandex_vpc_network.this
-  to = module.vpc_rus.yandex_vpc_network.this
-}
-
-moved {
-  from = yandex_vpc_subnet.this
-  to = module.vpc_rus.yandex_vpc_subnet.this
 }
