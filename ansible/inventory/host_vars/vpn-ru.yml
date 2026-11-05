@@ -5,9 +5,6 @@ firewall_ports4_tcp:
   # wg-api-web
   - port: 1234
     source: 192.168.177.1/24
-  # Dante
-  - port: '{{ dante_port }}'
-    source: '{{ wireguard_addr4 }}'
 firewall_ports_udp:
   # WireGuard
   - '{{ wireguard_listen_port }}'
@@ -49,6 +46,3 @@ wireguard_peers:
     preshared_key: '{{ vpn_ru.wg.psk.laptop3 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.21/32', '{{ wireguard_prefix6 }}.21/128']
 # ^^^ Next is 22
-
-wireguard_dependent_services:
-  - danted

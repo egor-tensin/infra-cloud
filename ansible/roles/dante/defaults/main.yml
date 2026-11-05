@@ -1,6 +1,0 @@
-dante_port: 1080
-
-#dante_iface_internal:
-dante_iface_external: eth0
-
-#dante_allowed_ips:

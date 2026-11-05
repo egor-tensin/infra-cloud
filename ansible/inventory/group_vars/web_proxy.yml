@@ -1,3 +1,0 @@
-dante_port: 5001
-dante_iface_internal: '{{ wireguard_name }}'
-dante_allowed_ips: '{{ wireguard_addr4 }}'

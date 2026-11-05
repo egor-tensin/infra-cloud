@@ -11,10 +11,6 @@ web
 [tor]
 vpn
 
-[web_proxy]
-vpn
-vpn-ru
-
 [all:vars]
 ansible_user=maintenance
 ansible_port=993

@@ -15,12 +15,6 @@
   roles:
     - tensin.infra.letsencrypt
 
-- name: Set up web proxy
-  hosts: web_proxy
-  gather_facts: false
-  roles:
-    - dante
-
 - name: Set up i2pd
   hosts: i2pd
   gather_facts: false
