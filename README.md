@@ -16,6 +16,7 @@ The goal is to be able to do this:
     . setenv.sh
     make destroy
     make apply
+    make config
 
 idempotetically.
 If that doesn't work, it's a bug.
