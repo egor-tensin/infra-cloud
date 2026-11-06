@@ -6,7 +6,7 @@ module "server" {
   size = "small"
 
   network = {
-    vpc_id = data.terraform_remote_state.meta.outputs.vpc_id_rus
+    vpc_id     = data.terraform_remote_state.meta.outputs.vpc_id_rus
     ip_address = local.ip
   }
 
