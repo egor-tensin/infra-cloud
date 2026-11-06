@@ -1,21 +1,23 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v2.1.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/server?ref=v4.0.0"
 
-  # See infra-terraform for details.
-  #image = ""
-  #size  = ""
-
-  region     = data.terraform_remote_state.meta.outputs.region
+  zone       = data.terraform_remote_state.meta.outputs.zone_int
   project_id = data.terraform_remote_state.meta.outputs.project_id
-
   name       = "vpn-server"
-  vpc_id     = data.terraform_remote_state.meta.outputs.vpc_id
-  volume_ids = [data.terraform_remote_state.data.outputs.volume_id_vpn]
+  size       = "small"
 
-  user     = data.terraform_remote_state.meta.outputs.user
-  ssh_keys = data.terraform_remote_state.meta.outputs.ssh_keys
-  ssh_port = data.terraform_remote_state.meta.outputs.ssh_port
+  network = {
+    vpc_id = data.terraform_remote_state.meta.outputs.vpc_id_int
+  }
 
-  # I'm tired from these alerts, the Tor deamon bombards me with those.
+  storage = [
+    {
+      disk_id = data.terraform_remote_state.data.outputs.id_vpn
+    },
+  ]
+
+  config = data.terraform_remote_state.meta.outputs.config
+
+  # I'm tired of these alerts, the Tor deamon bombards me with those.
   alert_cpu_enable = false
 }

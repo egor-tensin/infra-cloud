@@ -1,24 +1,21 @@
 module "server" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v2.1.0"
+  source = "github.com/egor-tensin/infra-terraform//yandex/server?ref=v4.0.0"
 
-  # See infra-terraform for details.
-  #image = ""
+  zone = data.terraform_remote_state.meta.outputs.zone_rus
+  name = "vpn-ru-server"
+  size = "small"
 
-  zone       = data.terraform_remote_state.meta.outputs.region_ru
-  name       = "vpn-ru-server"
-  subnet_id  = data.terraform_remote_state.meta.outputs.subnet_id_ru
-  ip_address = local.ip
+  network = {
+    vpc_id = data.terraform_remote_state.meta.outputs.vpc_id_rus
+    ip_address = local.ip
+  }
 
-  user     = data.terraform_remote_state.meta.outputs.user
-  ssh_keys = data.terraform_remote_state.meta.outputs.ssh_keys
-  ssh_port = data.terraform_remote_state.meta.outputs.ssh_port
-
-  core_fraction = 20
-
-  attached_disks = [
+  storage = [
     {
-      id   = data.terraform_remote_state.data.outputs.volume_id_vpn_ru
-      name = "data"
+      disk_id   = data.terraform_remote_state.data.outputs.id_vpn_ru
+      disk_name = "data"
     },
   ]
+
+  config = data.terraform_remote_state.meta.outputs.config
 }

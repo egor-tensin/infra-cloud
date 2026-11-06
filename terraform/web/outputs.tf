@@ -1,6 +1,6 @@
 output "id" {
-  value = module.server.droplet_id
+  value = module.server.id
 }
 output "ip" {
-  value = module.server.droplet_ip
+  value = module.server.ip
 }

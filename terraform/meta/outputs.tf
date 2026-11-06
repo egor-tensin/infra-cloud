@@ -9,14 +9,12 @@ output "project_id" {
   value = digitalocean_project.this.id
 }
 
-output "user" {
-  value = var.user
-}
-output "ssh_keys" {
-  value = sort(data.digitalocean_ssh_keys.this.ssh_keys.*.public_key)
-}
-output "ssh_port" {
-  value = var.ssh_port
+output "config" {
+  value = {
+    user     = var.user
+    ssh_keys = sort(data.digitalocean_ssh_keys.this.ssh_keys.*.public_key)
+    ssh_port = var.ssh_port
+  }
 }
 
 output "vpc_id_int" {

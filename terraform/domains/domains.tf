@@ -12,7 +12,7 @@ locals {
 }
 
 module "domain_new" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v2.1.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v4.0.0"
 
   name       = local.domain_new
   ip_address = local.ip_web
@@ -22,14 +22,14 @@ module "domain_new" {
 }
 
 resource "digitalocean_record" "vpn_new" {
-  domain = module.domain_new.domain_id
+  domain = module.domain_new.id
   type   = "A"
   name   = "vpn"
   value  = local.ip_vpn
 }
 
 resource "digitalocean_record" "vpn_ru_new" {
-  domain = module.domain_new.domain_id
+  domain = module.domain_new.id
   type   = "A"
   name   = "vpn-ru"
   value  = local.ip_vpn_ru
@@ -41,7 +41,7 @@ resource "digitalocean_record" "vpn_ru_new" {
 # fail at DNS resolution.
 
 module "domain_old" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v2.1.0"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/domain?ref=v4.0.0"
 
   name       = local.domain_old
   ip_address = local.ip_web
@@ -54,14 +54,14 @@ module "domain_old" {
 # to use vpn{-ru}.egort.name for Wireguard.
 
 resource "digitalocean_record" "vpn_old" {
-  domain = module.domain_old.domain_id
+  domain = module.domain_old.id
   type   = "CNAME"
   name   = "vpn"
   value  = "vpn.${local.domain_new}."
 }
 
 resource "digitalocean_record" "vpn_ru_old" {
-  domain = module.domain_old.domain_id
+  domain = module.domain_old.id
   type   = "CNAME"
   name   = "vpn-ru"
   value  = "vpn-ru.${local.domain_new}."

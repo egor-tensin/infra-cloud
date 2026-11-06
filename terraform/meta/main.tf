@@ -11,14 +11,14 @@ data "digitalocean_ssh_keys" "this" {
 }
 
 module "vpc_int" {
-  source = "github.com/egor-tensin/infra-terraform//digitalocean/vpc?ref=master"
+  source = "github.com/egor-tensin/infra-terraform//digitalocean/vpc?ref=v4.0.0"
 
   prefix = lower(var.name)
   zone   = var.zone_int
 }
 
 module "vpc_rus" {
-  source = "github.com/egor-tensin/infra-terraform//yandex/vpc?ref=master"
+  source = "github.com/egor-tensin/infra-terraform//yandex/vpc?ref=v4.0.0"
 
   prefix = lower(var.name)
   zone   = var.zone_rus

@@ -1,5 +1,5 @@
 output "id" {
-  value = module.server.instance_id
+  value = module.server.id
 }
 output "ip" {
   value = local.ip
