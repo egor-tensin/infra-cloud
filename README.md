@@ -41,6 +41,9 @@ Terraform
 Usage
 -----
 
+NB: after everything is set up, maintenance can be done via the GitHub
+workflow.
+
 ### Terraform
 
 * Check if the infrastructure matches configuration:
