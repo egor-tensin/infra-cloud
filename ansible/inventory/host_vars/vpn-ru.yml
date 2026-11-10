@@ -33,6 +33,10 @@ wireguard_peers:
   - public_key: qLmfXqkSf+S4fU3n1GRU1nkuYCnQXcZb1ebAru/4C2U=
     preshared_key: '{{ vpn_ru.wg.psk.laptop2 }}'
     allowed_ips: ['{{ wireguard_prefix4 }}.2/32', '{{ wireguard_prefix6 }}.2/128']
+  # tensin-raspi2
+  - public_key: JyZ7JPKRWGMRvBs3TMFr/L5zeaf9BVodQiqxMDomgyE=
+    preshared_key: '{{ vpn_ru.wg.psk.raspi2 }}'
+    allowed_ips: ['{{ wireguard_prefix4 }}.4/32', '{{ wireguard_prefix6 }}.4/128']
   # tensin-phone3
   - public_key: SUwBB3GKMhz9lRvO2Cp2qaIW11cZ/38cb25NQ6wl9x8=
     preshared_key: '{{ vpn_ru.wg.psk.phone3 }}'
